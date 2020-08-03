@@ -1,5 +1,5 @@
 Arguments: 
-  E:\Programs\node js\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add native-base
+  E:\Programs\node js\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add native-base --save
 
 PATH: 
   C:\Python38\Scripts\;C:\Python38\;E:\Programs\Python27\;E:\Programs\Python27\Scripts;C:\WinAVR-20100110\bin;C:\WinAVR-20100110\utils\bin;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;E:\Programs\node js\;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\Yarn\bin\;C:\Users\harry\AppData\Local\Mu\bin;C:\WINDOWS\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\Users\harry\AppData\Roaming\Quest Software\vWorkspace Client\;E:\Programs\Microsoft VS Code\bin;C:\Users\harry\AppData\Local\GitHubDesktop\bin;C:\Windows\System32;C:\Users\harry\AppData\Local\Microsoft\WindowsApps;C:\Users\harry\AppData\Roaming\npm;C:\Users\harry\AppData\Local\Yarn\bin
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'E:\ReactNativeApp\DrugInfo\my-app\node_modules\file-uri-to-path\test'
+  Error: EPERM: operation not permitted, unlink 'E:\Github\Wellbeing-React-Native\my-app\node_modules\nan\doc'
 
 npm manifest: 
   {
@@ -27,12 +27,18 @@ npm manifest:
       "eject": "expo eject"
     },
     "dependencies": {
+      "@react-navigation/native": "^5.7.2",
       "expo": "~38.0.8",
       "expo-status-bar": "^1.0.2",
       "react": "~16.11.0",
       "react-dom": "~16.11.0",
       "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
-      "react-native-web": "~0.11.7"
+      "react-native-web": "~0.11.7",
+      "react-native-reanimated": "~1.9.0",
+      "react-native-gesture-handler": "~1.6.0",
+      "react-native-screens": "~2.9.0",
+      "react-native-safe-area-context": "~3.0.7",
+      "@react-native-community/masked-view": "0.1.10"
     },
     "devDependencies": {
       "@babel/core": "^7.8.6",

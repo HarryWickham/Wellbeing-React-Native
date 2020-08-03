@@ -1,57 +1,33 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  StatusBar,
-  Platform,
-  SafeAreaView,
-  Image,
-  View,
-  ImageBackground,
-} from "react-native";
+import { StyleSheet, View } from "react-native";
 
-import { Button } from "native-base";
-
-var landinglogo = require("./assets/goodricke_logo.png");
-var footerlogo = require("./assets/frank_footer.png");
+import Landing from "./src/Landing";
+import Homepage from "./src/Homepage";
+import Search from "./src/Search";
 
 class App extends React.Component {
+  state = {
+    currentScreen: "search",
+  };
+
+  switchScreen = (currentScreen) => {
+    this.setState({ currentScreen });
+  };
+
+  renderScreen = () => {
+    if (this.state.currentScreen === "landing") {
+      return <Landing switchScreen={this.switchScreen} />;
+    } else if (this.state.currentScreen === "homepage") {
+      return <Homepage switchScreen={this.switchScreen} />;
+    } else if (this.state.currentScreen === "search") {
+      return <Search switchScreen={this.switchScreen} />;
+    }
+  };
+
   render() {
-    return (
-      <SafeAreaView style={styles.container}>
-        <View style={styles.viewStyle}>
-          <Text style={styles.titleStyle}>ALL THE GEAR NO IDEA</Text>
-          <Image source={landinglogo} style={styles.backgroundImage} />
-          <Text style={styles.titleStyle}>College Well-being</Text>
-          <Image source={footerlogo} style={styles.footerImage} />
-        </View>
-      </SafeAreaView>
-    );
+    return <View style={{ flex: 1 }}>{this.renderScreen()}</View>;
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fbb959",
-  },
-  viewStyle: {
-    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-    margin: 10,
-    flex: 1,
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "space-around",
-  },
-  titleStyle: {
-    fontSize: 30,
-    color: "#146f29",
-    fontWeight: "bold",
-  },
-  backgroundImage: {},
-  footerImage: {
-    alignSelf: "center",
-  },
-});
-
+const styles = StyleSheet.create({});
 export default App;
