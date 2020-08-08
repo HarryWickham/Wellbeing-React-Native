@@ -1,7 +1,10 @@
 import * as React from "react";
 import { Button, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import {
+  CardStyleInterpolators,
+  createStackNavigator,
+} from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
   FontAwesome,
@@ -9,6 +12,11 @@ import {
   FontAwesome5,
   Foundation,
 } from "@expo/vector-icons";
+
+import HomeScreen from "./src/screens/Home";
+import HelpScreen from "./src/screens/Help";
+import SettingsScreen from "./src/screens/Settings";
+import SearchScreen from "./src/screens/Search";
 
 const ICON_FOCUSED_COLOUR = "#146f29";
 const ICON_UNFOCUSED_COLOUR = "black";
@@ -29,88 +37,13 @@ function DetailsScreen() {
   );
 }
 
-function HomeScreen({ navigation }) {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: BACKGROUND_COLOUR,
-      }}
-    >
-      <Text>Home screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate("Details")}
-      />
-    </View>
-  );
-}
-
-function SettingsScreen({ navigation }) {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: BACKGROUND_COLOUR,
-      }}
-    >
-      <Text>Settings screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate("Details")}
-      />
-    </View>
-  );
-}
-
-function HelpScreen({ navigation }) {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: BACKGROUND_COLOUR,
-      }}
-    >
-      <Text>Help screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate("Details")}
-      />
-    </View>
-  );
-}
-
-function SearchScreen({ navigation }) {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: BACKGROUND_COLOUR,
-      }}
-    >
-      <Text>Search screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate("Details")}
-      />
-    </View>
-  );
-}
-
 const HomeStack = createStackNavigator();
 
 function HomeStackScreen() {
   return (
     <HomeStack.Navigator
       screenOptions={{
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         headerTintColor: "black",
         headerTitleAlign: "center",
         headerStyle: {
@@ -130,6 +63,7 @@ function SettingsStackScreen() {
   return (
     <SettingsStack.Navigator
       screenOptions={{
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         headerTintColor: "black",
         headerTitleAlign: "center",
         headerStyle: {
@@ -149,6 +83,7 @@ function HelpStackScreen() {
   return (
     <HelpStack.Navigator
       screenOptions={{
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         headerTintColor: "black",
         headerTitleAlign: "center",
         headerStyle: {
@@ -168,6 +103,7 @@ function SearchStackScreen() {
   return (
     <SearchStack.Navigator
       screenOptions={{
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         headerTintColor: "black",
         headerTitleAlign: "center",
         headerStyle: {
