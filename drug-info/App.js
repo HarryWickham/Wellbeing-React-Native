@@ -12,10 +12,18 @@ import {
 
 const ICON_FOCUSED_COLOUR = "#146f29";
 const ICON_UNFOCUSED_COLOUR = "black";
+const BACKGROUND_COLOUR = "#fbb959";
 
 function DetailsScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: BACKGROUND_COLOUR,
+      }}
+    >
       <Text>Details!</Text>
     </View>
   );
@@ -23,7 +31,14 @@ function DetailsScreen() {
 
 function HomeScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: BACKGROUND_COLOUR,
+      }}
+    >
       <Text>Home screen</Text>
       <Button
         title="Go to Details"
@@ -35,7 +50,14 @@ function HomeScreen({ navigation }) {
 
 function SettingsScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: BACKGROUND_COLOUR,
+      }}
+    >
       <Text>Settings screen</Text>
       <Button
         title="Go to Details"
@@ -47,7 +69,14 @@ function SettingsScreen({ navigation }) {
 
 function HelpScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: BACKGROUND_COLOUR,
+      }}
+    >
       <Text>Help screen</Text>
       <Button
         title="Go to Details"
@@ -59,7 +88,14 @@ function HelpScreen({ navigation }) {
 
 function SearchScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: BACKGROUND_COLOUR,
+      }}
+    >
       <Text>Search screen</Text>
       <Button
         title="Go to Details"
@@ -73,7 +109,15 @@ const HomeStack = createStackNavigator();
 
 function HomeStackScreen() {
   return (
-    <HomeStack.Navigator>
+    <HomeStack.Navigator
+      screenOptions={{
+        headerTintColor: "black",
+        headerTitleAlign: "center",
+        headerStyle: {
+          backgroundColor: BACKGROUND_COLOUR,
+        },
+      }}
+    >
       <HomeStack.Screen name="Home" component={HomeScreen} />
       <HomeStack.Screen name="Details" component={DetailsScreen} />
     </HomeStack.Navigator>
@@ -84,7 +128,15 @@ const SettingsStack = createStackNavigator();
 
 function SettingsStackScreen() {
   return (
-    <SettingsStack.Navigator>
+    <SettingsStack.Navigator
+      screenOptions={{
+        headerTintColor: "black",
+        headerTitleAlign: "center",
+        headerStyle: {
+          backgroundColor: BACKGROUND_COLOUR,
+        },
+      }}
+    >
       <SettingsStack.Screen name="Settings" component={SettingsScreen} />
       <SettingsStack.Screen name="Details" component={DetailsScreen} />
     </SettingsStack.Navigator>
@@ -95,7 +147,15 @@ const HelpStack = createStackNavigator();
 
 function HelpStackScreen() {
   return (
-    <HelpStack.Navigator>
+    <HelpStack.Navigator
+      screenOptions={{
+        headerTintColor: "black",
+        headerTitleAlign: "center",
+        headerStyle: {
+          backgroundColor: BACKGROUND_COLOUR,
+        },
+      }}
+    >
       <HelpStack.Screen name="Help" component={HelpScreen} />
       <HelpStack.Screen name="Details" component={DetailsScreen} />
     </HelpStack.Navigator>
@@ -106,7 +166,15 @@ const SearchStack = createStackNavigator();
 
 function SearchStackScreen() {
   return (
-    <SearchStack.Navigator>
+    <SearchStack.Navigator
+      screenOptions={{
+        headerTintColor: "black",
+        headerTitleAlign: "center",
+        headerStyle: {
+          backgroundColor: BACKGROUND_COLOUR,
+        },
+      }}
+    >
       <SearchStack.Screen name="Search" component={SearchScreen} />
       <SearchStack.Screen name="Details" component={DetailsScreen} />
     </SearchStack.Navigator>
