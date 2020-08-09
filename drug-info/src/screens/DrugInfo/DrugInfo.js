@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import { Text, View, Button } from "react-native";
-
+import {
+  createMaterialTopTabNavigator,
+  createAppContainer,
+} from "react-navigation";
+import CannabisScreen from "./Cannabis";
 const BACKGROUND_COLOUR = "#fbb959";
 
-const Settings = ({ navigation }) => {
+const DrugInfo = ({ navigation }) => {
   return (
     <View
       style={{
@@ -13,7 +17,7 @@ const Settings = ({ navigation }) => {
         backgroundColor: BACKGROUND_COLOUR,
       }}
     >
-      <Text>Settings screen</Text>
+      <Text>DrugInfo screen</Text>
       <Button
         title="Go to Details"
         onPress={() => navigation.navigate("Details")}
@@ -21,5 +25,4 @@ const Settings = ({ navigation }) => {
     </View>
   );
 };
-
-export default Settings;
+export default DrugInfo;

@@ -15,8 +15,9 @@ import {
 
 import HomeScreen from "./src/screens/Home";
 import HelpScreen from "./src/screens/Help";
-import SettingsScreen from "./src/screens/Settings";
+import AboutScreen from "./src/screens/About";
 import SearchScreen from "./src/screens/Search";
+import DrugInfo from "./src/screens/DrugInfo/DrugInfo";
 
 const ICON_FOCUSED_COLOUR = "#146f29";
 const ICON_UNFOCUSED_COLOUR = "black";
@@ -52,16 +53,16 @@ function HomeStackScreen() {
       }}
     >
       <HomeStack.Screen name="Home" component={HomeScreen} />
-      <HomeStack.Screen name="Details" component={DetailsScreen} />
+      <HomeStack.Screen name="DrugInfo" component={DrugInfo} />
     </HomeStack.Navigator>
   );
 }
 
-const SettingsStack = createStackNavigator();
+const AboutStack = createStackNavigator();
 
-function SettingsStackScreen() {
+function AboutStackScreen() {
   return (
-    <SettingsStack.Navigator
+    <AboutStack.Navigator
       screenOptions={{
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         headerTintColor: "black",
@@ -71,9 +72,9 @@ function SettingsStackScreen() {
         },
       }}
     >
-      <SettingsStack.Screen name="Settings" component={SettingsScreen} />
-      <SettingsStack.Screen name="Details" component={DetailsScreen} />
-    </SettingsStack.Navigator>
+      <AboutStack.Screen name="About" component={AboutScreen} />
+      <AboutStack.Screen name="Details" component={DetailsScreen} />
+    </AboutStack.Navigator>
   );
 }
 
@@ -176,12 +177,12 @@ export default function App(props) {
           }}
         />
         <Tab.Screen
-          name="Settings"
-          component={SettingsStackScreen}
+          name="About"
+          component={AboutStackScreen}
           options={{
             tabBarIcon: (props) => (
               <FontAwesome
-                name="cog"
+                name="question-circle"
                 size={30}
                 color={
                   props.focused ? ICON_FOCUSED_COLOUR : ICON_UNFOCUSED_COLOUR
