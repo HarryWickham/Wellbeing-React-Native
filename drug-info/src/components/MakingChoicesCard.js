@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Text, StyleSheet, View, Image } from "react-native";
 
-const CardDetails = ({ title, description, image }) => {
+const MakingChoicesCard = ({ title, description, image }) => {
   const newLocal = 6;
   return (
     <View style={styles.viewStyle}>
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CardDetails;
+export default MakingChoicesCard;

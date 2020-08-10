@@ -35,9 +35,12 @@ function NOS() {
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function App() {
+export default function App({ route, navigation }) {
+  const { page } = route.params;
+
   return (
     <Tab.Navigator
+      initialRouteName={page}
       tabBarOptions={{
         labelStyle: { fontSize: Platform.OS === "android" ? 9 : 6 },
         showLabel: true,
