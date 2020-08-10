@@ -39,7 +39,7 @@ const Home = ({ navigation }) => {
             </TouchableOpacity>
             <CardDetails
               title="Cocaine"
-              description="The most common form of cannabis is weed which is the dried leaves and flowering parts of a cannabis plant. Skunk is normally twice as strong as the other varieties with a particularly strong smell."
+              description="Cocaine refers to a drug in a powder form or crystal form. The powder is usually mixed with substances such as corn starch, talcum powder and/or sugar or other drugs such as local anesthetics or amphetamines."
               image={
                 <MaterialCommunityIcons
                   name="weather-tornado"
@@ -50,7 +50,7 @@ const Home = ({ navigation }) => {
             />
             <CardDetails
               title="Ecstasy"
-              description="A medication that is used to induce loss of consciousness, or anaesthesia. It can produce relaxation and relieve pain in humans and animals. It is a commonly used due to its hallucinogenic, tranquilizing and dissociative effects."
+              description="As an amphetamine ecstasy is a central nervous system stimulant that increases the activity of the brain."
               image={<FontAwesome5 name="pills" size={100} color="black" />}
             />
             <CardDetails
@@ -75,7 +75,7 @@ const Home = ({ navigation }) => {
       <View style={{ marginBottom: 20 }}>
         <View style={styles.fullViewStyle}>
           <View style={styles.titleViewStyle}>
-            <Text style={styles.title}>Drug Information</Text>
+            <Text style={styles.title}>Making Choices</Text>
             <Text style={styles.subTitle}>Tap to expand</Text>
           </View>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>

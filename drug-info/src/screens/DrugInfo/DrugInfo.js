@@ -1,28 +1,102 @@
 import React, { Component } from "react";
 import { Text, View, Button } from "react-native";
-import {
-  createMaterialTopTabNavigator,
-  createAppContainer,
-} from "react-navigation";
+import { NavigationContainer } from "@react-navigation/native";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import CannabisScreen from "./Cannabis";
+import CocaineScreen from "./Cocaine";
+import EcstasyScreen from "./Ecstasy";
+import KetamineScreen from "./Ketamine";
+import NOSScreen from "./NOS";
+import {
+  FontAwesome,
+  Entypo,
+  FontAwesome5,
+  Foundation,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
+
 const BACKGROUND_COLOUR = "#fbb959";
 
-const DrugInfo = ({ navigation }) => {
+function Cannabis() {
+  return <CannabisScreen />;
+}
+function Cocaine() {
+  return <CocaineScreen />;
+}
+function Ecstasy() {
+  return <EcstasyScreen />;
+}
+function Ketamine() {
+  return <KetamineScreen />;
+}
+function NOS() {
+  return <NOSScreen />;
+}
+
+const Tab = createMaterialTopTabNavigator();
+
+export default function App() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: BACKGROUND_COLOUR,
+    <Tab.Navigator
+      tabBarOptions={{
+        labelStyle: { fontSize: Platform.OS === "android" ? 9 : 6 },
+        showLabel: true,
+        showIcon: true,
       }}
     >
-      <Text>DrugInfo screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate("Details")}
+      <Tab.Screen
+        name="Cannabis"
+        component={Cannabis}
+        options={{
+          tabBarIcon: (props) => (
+            <FontAwesome5 name="cannabis" size={20} color="black" />
+          ),
+        }}
       />
-    </View>
+      <Tab.Screen
+        name="Cocaine"
+        component={Cocaine}
+        options={{
+          tabBarIcon: (props) => (
+            <MaterialCommunityIcons
+              name="weather-tornado"
+              size={20}
+              color="black"
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Ecstasy"
+        component={Ecstasy}
+        options={{
+          tabBarIcon: (props) => (
+            <FontAwesome5 name="pills" size={20} color="black" />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Ketamine"
+        component={Ketamine}
+        options={{
+          tabBarIcon: (props) => (
+            <FontAwesome5 name="capsules" size={20} color="black" />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="NOS"
+        component={NOS}
+        options={{
+          tabBarIcon: (props) => (
+            <MaterialCommunityIcons
+              name="diving-scuba-tank"
+              size={20}
+              color="black"
+            />
+          ),
+        }}
+      />
+    </Tab.Navigator>
   );
-};
-export default DrugInfo;
+}
