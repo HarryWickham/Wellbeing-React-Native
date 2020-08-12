@@ -1,7 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import { Text, View, Button, StyleSheet } from "react-native";
 import { Overlay } from "react-native-elements";
-import MakingChoicesOverlay from "../components/MakingChoicesOverlay";
 import {
   FontAwesome,
   Entypo,
@@ -30,17 +29,11 @@ const Help = ({ navigation }) => {
         backgroundColor: BACKGROUND_COLOUR,
       }}
     >
-      <Button title="Open Overlay" onPress={toggleOverlay} />
-
-      <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
-        <View style={{ width: "90%", height: "90%" }}>
-          <MakingChoicesOverlay
-            title="Cannabis"
-            description="The most common form of cannabis is weed which is the dried leaves and flowering parts of a cannabis plant. Skunk is normally twice as strong as the other varieties with a particularly strong smell."
-            image={<FontAwesome5 name="cannabis" size={100} color="black" />}
-          />
-        </View>
-      </Overlay>
+      <Text>Help screen</Text>
+      <Button
+        title="Go to Details"
+        onPress={() => navigation.navigate("Details")}
+      />
     </View>
   );
 };

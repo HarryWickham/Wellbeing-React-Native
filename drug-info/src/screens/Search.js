@@ -13,7 +13,7 @@ const Search = ({ navigation }) => {
         backgroundColor: BACKGROUND_COLOUR,
       }}
     >
-      <Text>Help screen</Text>
+      <Text>Search screen</Text>
       <Button
         title="Go to Details"
         onPress={() => navigation.navigate("Details")}
