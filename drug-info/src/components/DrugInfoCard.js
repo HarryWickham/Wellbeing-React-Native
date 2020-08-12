@@ -1,8 +1,15 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View, Image } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  Image,
+  Dimensions,
+  PixelRatio,
+  Platform,
+} from "react-native";
 
 const DrugInfoCard = ({ title, description, image }) => {
-  const newLocal = 6;
   return (
     <View style={styles.viewStyle}>
       <View style={styles.imageViewStyle}>{image}</View>
