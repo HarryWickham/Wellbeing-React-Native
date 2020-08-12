@@ -1,11 +1,9 @@
 import React, { Component, useState, useEffect } from "react";
 import { Text, View, Button, ScrollView, StyleSheet } from "react-native";
-import MakingChoicesCard from "./MakingChoicesCard";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Overlay } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
-import MakingChoicesOverlay from "./MakingChoicesOverlay";
-import MakingChoicesCardAndOverlay from "./MakingChoicesCardAndOverlay";
+import MakingChoicesCardAndOverlay from "../Common/CardAndOverlay";
 import {
   FontAwesome,
   Entypo,

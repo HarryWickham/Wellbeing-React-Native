@@ -1,11 +1,11 @@
 import React, { Component, useState, useEffect } from "react";
 import { Text, View, Button, ScrollView, StyleSheet } from "react-native";
-import MakingChoicesCard from "./MakingChoicesCard";
-import MakingChoicesOverlay from "./MakingChoicesOverlay";
+import Card from "./Card";
+import OverlayComp from "./Overlay";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Overlay } from "react-native-elements";
 
-const MakingChoicesCardAndOverlay = ({ title, description, image }) => {
+const CardAndOverlay = ({ title, description, image }) => {
   const [visible, setVisible] = useState(false);
   const toggleOverlay = () => {
     setVisible(!visible);
@@ -13,11 +13,7 @@ const MakingChoicesCardAndOverlay = ({ title, description, image }) => {
   return (
     <View>
       <TouchableOpacity onPress={toggleOverlay} activeOpacity={0.8}>
-        <MakingChoicesCard
-          title={title}
-          description={description}
-          image={image}
-        />
+        <Card title={title} description={description} image={image} />
       </TouchableOpacity>
       <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
         <View
@@ -26,11 +22,7 @@ const MakingChoicesCardAndOverlay = ({ title, description, image }) => {
             height: "85%",
           }}
         >
-          <MakingChoicesOverlay
-            title={title}
-            description={description}
-            image={image}
-          />
+          <OverlayComp title={title} description={description} image={image} />
         </View>
       </Overlay>
     </View>
@@ -39,4 +31,4 @@ const MakingChoicesCardAndOverlay = ({ title, description, image }) => {
 
 const styles = StyleSheet.create({});
 
-export default MakingChoicesCardAndOverlay;
+export default CardAndOverlay;

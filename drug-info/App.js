@@ -18,7 +18,7 @@ import HelpScreen from "./src/screens/Help";
 import AboutScreen from "./src/screens/About";
 import SearchScreen from "./src/screens/Search";
 import DrugInfo from "./src/screens/DrugInfo/DrugInfo";
-import DrugInfoScrollView from "./src/components/DrugInfoScrollView";
+import DrugInfoScrollView from "./src/components/DrugInfo/DrugInfoScrollView";
 
 const ICON_FOCUSED_COLOUR = "#146f29";
 const ICON_UNFOCUSED_COLOUR = "black";

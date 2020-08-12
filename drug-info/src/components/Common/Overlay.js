@@ -1,15 +1,8 @@
 import React, { Component } from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  Image,
-  Dimensions,
-  PixelRatio,
-  Platform,
-} from "react-native";
+import { Text, StyleSheet, View, Image } from "react-native";
 
-const DrugInfoCard = ({ title, description, image }) => {
+const Overlay = ({ title, description, image }) => {
+  const newLocal = 6;
   return (
     <View style={styles.viewStyle}>
       <View style={styles.imageViewStyle}>{image}</View>
@@ -23,8 +16,6 @@ const DrugInfoCard = ({ title, description, image }) => {
 
 const styles = StyleSheet.create({
   viewStyle: {
-    width: 220,
-    height: Platform.OS === "android" ? 360 : 320,
     backgroundColor: "#ffffff",
     margin: 10,
     flex: 1,
@@ -34,13 +25,13 @@ const styles = StyleSheet.create({
   },
   titleTextStyle: {
     margin: 5,
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: "bold",
     color: "#008080",
   },
   descTextStyle: {
     marginHorizontal: 5,
-    fontSize: 15,
+    fontSize: 20,
     color: "#008080",
   },
   imageViewStyle: {
@@ -49,4 +40,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DrugInfoCard;
+export default Overlay;

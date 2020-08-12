@@ -1,8 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import { Text, View, Button, ScrollView, StyleSheet } from "react-native";
-import DrugInfoCard from "./DrugInfoCard";
+import DrugInfoCard from "../Common/Card";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { Overlay } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 import {
   FontAwesome,
