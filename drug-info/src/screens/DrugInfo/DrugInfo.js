@@ -107,7 +107,7 @@ export default function App({ route, navigation }) {
       }}
     >
       <Tab.Screen
-        name="Cannabis"
+        name="CANNABIS"
         component={Cannabis}
         options={{
           tabBarIcon: (props) => (
@@ -116,7 +116,7 @@ export default function App({ route, navigation }) {
         }}
       />
       <Tab.Screen
-        name="Cocaine"
+        name="COCAINE"
         component={Cocaine}
         options={{
           tabBarIcon: (props) => (
@@ -129,7 +129,7 @@ export default function App({ route, navigation }) {
         }}
       />
       <Tab.Screen
-        name="Ecstasy"
+        name="ECSTASY"
         component={Ecstasy}
         options={{
           tabBarIcon: (props) => (
@@ -138,7 +138,7 @@ export default function App({ route, navigation }) {
         }}
       />
       <Tab.Screen
-        name="Ketamine"
+        name="KETAMINE"
         component={Ketamine}
         options={{
           tabBarIcon: (props) => (

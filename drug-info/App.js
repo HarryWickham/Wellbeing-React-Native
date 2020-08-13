@@ -14,11 +14,10 @@ import {
 } from "@expo/vector-icons";
 
 import HomeScreen from "./src/screens/Home";
-import HelpScreen from "./src/screens/Help";
+import HelpScreen from "./src/screens/HelpScreens/HelpHome";
 import AboutScreen from "./src/screens/About";
 import SearchScreen from "./src/screens/Search";
 import DrugInfo from "./src/screens/DrugInfo/DrugInfo";
-import DrugInfoScrollView from "./src/components/DrugInfo/DrugInfoScrollView";
 
 const ICON_FOCUSED_COLOUR = "#146f29";
 const ICON_UNFOCUSED_COLOUR = "black";
