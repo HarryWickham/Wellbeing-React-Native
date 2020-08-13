@@ -1,26 +1,12 @@
-import React, { Component } from "react";
-import {
-  Text,
-  View,
-  Button,
-  TouchableOpacity,
-  ScrollView,
-  Alert,
-} from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+import React from "react";
+import { Text, View, TouchableOpacity, ScrollView } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import CannabisScreen from "./Cannabis";
 import CocaineScreen from "./Cocaine";
 import EcstasyScreen from "./Ecstasy";
 import KetamineScreen from "./Ketamine";
 import NOSScreen from "./NOS";
-import {
-  FontAwesome,
-  Entypo,
-  FontAwesome5,
-  Foundation,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
+import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 
 const BACKGROUND_COLOUR = "#fbb959";
 
@@ -76,23 +62,22 @@ function MyTabBar({ state, descriptors, navigation, position }) {
           return (
             <TouchableOpacity
               accessibilityRole="button"
+              key={label}
               accessibilityStates={isFocused ? ["selected"] : []}
               accessibilityLabel={options.tabBarAccessibilityLabel}
               testID={options.tabBarTestID}
               onPress={onPress}
               style={{
                 flex: 1,
-
                 borderBottomColor: isFocused ? "dodgerblue" : "white",
                 paddingVertical: 20,
                 borderBottomWidth: 2,
-
                 width: 80,
               }}
             >
               <Text
                 style={{
-                  color: "black",
+                  color: isFocused ? "dodgerblue" : "black",
                   textAlign: "center",
                 }}
               >

@@ -23,6 +23,9 @@
       "favicon": "./assets/favicon.png"
     },
     "description": "",
-    "githubUrl": "https://github.com/HarryWickham/Wellbeing-React-Native"
+    "githubUrl": "https://github.com/HarryWickham/Wellbeing-React-Native",
+    "android": {
+      "package": "uk.co.harrywickham"
+    }
   }
 }

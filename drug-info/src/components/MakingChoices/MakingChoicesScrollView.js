@@ -1,29 +1,14 @@
-import React, { Component, useState, useEffect } from "react";
-import { Text, View, Button, ScrollView, StyleSheet } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { Overlay } from "react-native-elements";
-import { useNavigation } from "@react-navigation/native";
+import React from "react";
+import { Text, View, ScrollView, StyleSheet } from "react-native";
 import MakingChoicesCardAndOverlay from "../Common/CardAndOverlay";
 import {
   FontAwesome,
-  Entypo,
   FontAwesome5,
-  Foundation,
   Ionicons,
-  AntDesign,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
 
-const MakingChoicesScrollView = ({ drugInfo }) => {
-  const navigation = useNavigation();
-  const [visible, setVisible] = useState(false);
-  const toggleOverlay = () => {
-    setVisible(!visible);
-  };
-  const [visible2, setVisible2] = useState(false);
-  const toggleOverlay2 = () => {
-    setVisible2(!visible2);
-  };
+const MakingChoicesScrollView = () => {
   return (
     <View style={{ marginBottom: 20 }}>
       <View style={styles.fullViewStyle}>
