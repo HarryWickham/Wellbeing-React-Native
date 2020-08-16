@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View, Image } from "react-native";
+import { Text, StyleSheet, View, Image, Dimensions } from "react-native";
+
+const { height, width } = Dimensions.get("window");
 
 const HorizontalCard = ({ title, description, image }) => {
   return (
@@ -17,18 +19,15 @@ const HorizontalCard = ({ title, description, image }) => {
 
 const styles = StyleSheet.create({
   viewStyle: {
-    width: "60%",
     margin: 10,
     flexDirection: "row",
     justifyContent: "center",
   },
   viewStyle2: {
-    flexDirection: "column",
-    justifyContent: "flex-start",
     borderWidth: 1,
     borderRadius: 8,
     backgroundColor: "#ffffff",
-    justifyContent: "center",
+    flexShrink: 1,
   },
   titleTextStyle: {
     margin: 5,
@@ -45,12 +44,13 @@ const styles = StyleSheet.create({
   },
   imageViewStyle: {
     alignItems: "center",
-    marginHorizontal: 5,
+    marginRight: 5,
     paddingHorizontal: 5,
     borderWidth: 1,
     borderRadius: 8,
     backgroundColor: "#ffffff",
     justifyContent: "center",
+    flexShrink: 0,
   },
 });
 

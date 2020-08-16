@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     margin: 10,
     flex: 1,
+    borderWidth: 1,
     flexDirection: "column",
     justifyContent: "flex-start",
     borderRadius: 8,
