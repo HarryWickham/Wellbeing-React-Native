@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Text, StyleSheet, View, Image } from "react-native";
 
 const Card = ({ title, smallDescription, image }) => {
-  const newLocal = 6;
   return (
     <View style={styles.viewStyle}>
       <View style={styles.imageViewStyle}>{image}</View>

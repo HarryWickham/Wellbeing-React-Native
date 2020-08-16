@@ -13,6 +13,8 @@ import {
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
 
+const ICON_SIZE = 100;
+
 const DrugInfoScrollView = ({ drugInfo }) => {
   const navigation = useNavigation();
   return (
@@ -32,7 +34,9 @@ const DrugInfoScrollView = ({ drugInfo }) => {
             <DrugInfoCard
               title="Cannabis"
               smallDescription="The most common form of cannabis is weed which is the dried leaves and flowering parts of a cannabis plant. Skunk is normally twice as strong as the other varieties with a particularly strong smell."
-              image={<FontAwesome5 name="cannabis" size={100} color="black" />}
+              image={
+                <FontAwesome5 name="cannabis" size={ICON_SIZE} color="black" />
+              }
             />
           </TouchableOpacity>
           <TouchableOpacity
@@ -45,7 +49,7 @@ const DrugInfoScrollView = ({ drugInfo }) => {
               image={
                 <MaterialCommunityIcons
                   name="weather-tornado"
-                  size={100}
+                  size={ICON_SIZE}
                   color="black"
                 />
               }
@@ -58,7 +62,9 @@ const DrugInfoScrollView = ({ drugInfo }) => {
             <DrugInfoCard
               title="Ecstasy"
               smallDescription="As an amphetamine ecstasy is a central nervous system stimulant that increases the activity of the brain."
-              image={<FontAwesome5 name="pills" size={100} color="black" />}
+              image={
+                <FontAwesome5 name="pills" size={ICON_SIZE} color="black" />
+              }
             />
           </TouchableOpacity>
           <TouchableOpacity
@@ -70,7 +76,9 @@ const DrugInfoScrollView = ({ drugInfo }) => {
             <DrugInfoCard
               title="Ketamine"
               smallDescription="A medication that is used to induce loss of consciousness, or anaesthesia. It can produce relaxation and relieve pain in humans and animals. It is a commonly used due to its hallucinogenic, tranquilizing and dissociative effects."
-              image={<FontAwesome5 name="capsules" size={100} color="black" />}
+              image={
+                <FontAwesome5 name="capsules" size={ICON_SIZE} color="black" />
+              }
             />
           </TouchableOpacity>
           <TouchableOpacity
@@ -83,7 +91,7 @@ const DrugInfoScrollView = ({ drugInfo }) => {
               image={
                 <MaterialCommunityIcons
                   name="diving-scuba-tank"
-                  size={100}
+                  size={ICON_SIZE}
                   color="black"
                 />
               }

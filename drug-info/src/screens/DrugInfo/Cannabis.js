@@ -13,6 +13,8 @@ import {
 
 const { height, width } = Dimensions.get("window");
 
+const ICON_SIZE = 100;
+
 export default class Cannabis extends Component {
   render() {
     return (
@@ -27,7 +29,9 @@ export default class Cannabis extends Component {
           <HorizontalCard
             title="What is it?"
             description="The most common form of cannabis is weed which is the dried leaves and flowering parts of a cannabis plant. Skunk is normally twice as strong as the other varieties with a particularly strong smell."
-            image={<FontAwesome5 name="cannabis" size={100} color="black" />}
+            image={
+              <FontAwesome5 name="cannabis" size={ICON_SIZE} color="black" />
+            }
           />
         </View>
       </ScrollView>
