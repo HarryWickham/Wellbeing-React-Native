@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View, ScrollView, StyleSheet } from "react-native";
-import WhenItGoesWrongCardAndOverlay from "../Common/CardAndBigOverlay";
+import WhenItGoesWrongCardAndOverlay from "../Common/CardAndOverlay";
 import {
   FontAwesome,
   FontAwesome5,

@@ -18,9 +18,6 @@ const styles = StyleSheet.create({
   viewStyle: {
     backgroundColor: "#ffffff",
     margin: 10,
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "flex-start",
     borderRadius: 8,
   },
   titleTextStyle: {

@@ -31,7 +31,7 @@ const DrugInfoScrollView = ({ drugInfo }) => {
           >
             <DrugInfoCard
               title="Cannabis"
-              description="The most common form of cannabis is weed which is the dried leaves and flowering parts of a cannabis plant. Skunk is normally twice as strong as the other varieties with a particularly strong smell."
+              smallDescription="The most common form of cannabis is weed which is the dried leaves and flowering parts of a cannabis plant. Skunk is normally twice as strong as the other varieties with a particularly strong smell."
               image={<FontAwesome5 name="cannabis" size={100} color="black" />}
             />
           </TouchableOpacity>
@@ -41,7 +41,7 @@ const DrugInfoScrollView = ({ drugInfo }) => {
           >
             <DrugInfoCard
               title="Cocaine"
-              description="Cocaine refers to a drug in a powder form or crystal form. The powder is usually mixed with substances such as corn starch, talcum powder and/or sugar or other drugs such as local anesthetics or amphetamines."
+              smallDescription="Cocaine refers to a drug in a powder form or crystal form. The powder is usually mixed with substances such as corn starch, talcum powder and/or sugar or other drugs such as local anesthetics or amphetamines."
               image={
                 <MaterialCommunityIcons
                   name="weather-tornado"
@@ -57,7 +57,7 @@ const DrugInfoScrollView = ({ drugInfo }) => {
           >
             <DrugInfoCard
               title="Ecstasy"
-              description="As an amphetamine ecstasy is a central nervous system stimulant that increases the activity of the brain."
+              smallDescription="As an amphetamine ecstasy is a central nervous system stimulant that increases the activity of the brain."
               image={<FontAwesome5 name="pills" size={100} color="black" />}
             />
           </TouchableOpacity>
@@ -69,7 +69,7 @@ const DrugInfoScrollView = ({ drugInfo }) => {
           >
             <DrugInfoCard
               title="Ketamine"
-              description="A medication that is used to induce loss of consciousness, or anaesthesia. It can produce relaxation and relieve pain in humans and animals. It is a commonly used due to its hallucinogenic, tranquilizing and dissociative effects."
+              smallDescription="A medication that is used to induce loss of consciousness, or anaesthesia. It can produce relaxation and relieve pain in humans and animals. It is a commonly used due to its hallucinogenic, tranquilizing and dissociative effects."
               image={<FontAwesome5 name="capsules" size={100} color="black" />}
             />
           </TouchableOpacity>
@@ -79,7 +79,7 @@ const DrugInfoScrollView = ({ drugInfo }) => {
           >
             <DrugInfoCard
               title="NOS"
-              description="Nitrous oxide is a colourless gas that is commonly used for sedation and pain relief, but is also used by people to feel intoxicated or high.. It is commonly used by dentists and medical professionals to sedate patients undergoing minor medical procedures."
+              smallDescription="Nitrous oxide is a colourless gas that is commonly used for sedation and pain relief, but is also used by people to feel intoxicated or high.. It is commonly used by dentists and medical professionals to sedate patients undergoing minor medical procedures."
               image={
                 <MaterialCommunityIcons
                   name="diving-scuba-tank"

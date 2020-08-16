@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import { Text, StyleSheet, View, Image } from "react-native";
 
-const Card = ({ title, description, image }) => {
+const Card = ({ title, smallDescription, image }) => {
   const newLocal = 6;
   return (
     <View style={styles.viewStyle}>
       <View style={styles.imageViewStyle}>{image}</View>
       <Text style={styles.titleTextStyle}>{title}</Text>
-      <Text style={styles.descTextStyle} adjustsFontSizeToFit>
-        {description}
-      </Text>
+      <Text style={styles.descTextStyle}>{smallDescription}</Text>
     </View>
   );
 };
