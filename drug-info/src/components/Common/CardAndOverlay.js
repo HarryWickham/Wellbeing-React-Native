@@ -31,6 +31,7 @@ const CardAndOverlay = ({
       </TouchableOpacity>
       <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
         <ScrollView
+          bounces={false}
           style={{
             flexGrow: 0,
             width: "85%",
