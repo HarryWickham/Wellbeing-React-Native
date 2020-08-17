@@ -23,7 +23,19 @@ const ConversationScrollView = ({ drugInfo }) => {
     setVisible(!visible);
   };
   return (
-    <View style={{ marginBottom: 20 }}>
+    <View
+      style={{
+        marginBottom: 20,
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 1,
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 1.41,
+        elevation: 2,
+      }}
+    >
       <View style={styles.fullViewStyle}>
         <View style={styles.titleViewStyle}>
           <Text style={styles.title}>Start A Conversation</Text>

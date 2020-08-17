@@ -15,88 +15,58 @@ import {
 
 const ICON_SIZE = 100;
 
-const DrugInfoScrollView = ({ drugInfo }) => {
+function cards(data) {
   const navigation = useNavigation();
   return (
-    <View style={{ marginBottom: 20 }}>
+    <>
+      {data.drugs.map((element) => {
+        return (
+          <TouchableOpacity
+            key={element.title}
+            onPress={() =>
+              navigation.navigate("DrugInfo", { page: element.title })
+            }
+            activeOpacity={0.8}
+          >
+            <DrugInfoCard
+              title={element.title}
+              smallDescription={element.smallDescription}
+              largeDescription={element.largeDescription}
+              image={
+                <FontAwesome5 name="cannabis" size={ICON_SIZE} color="black" />
+              }
+            />
+          </TouchableOpacity>
+        );
+      })}
+    </>
+  );
+}
+
+const DrugInfoScrollView = ({ data }) => {
+  const navigation = useNavigation();
+  return (
+    <View
+      style={{
+        marginBottom: 20,
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 1,
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 1.41,
+
+        elevation: 2,
+      }}
+    >
       <View style={styles.fullViewStyle}>
         <View style={styles.titleViewStyle}>
           <Text style={styles.title}>Drug Information</Text>
           <Text style={styles.subTitle}>Tap to expand</Text>
         </View>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate("DrugInfo", { page: "Cannabis" })
-            }
-            activeOpacity={0.8}
-          >
-            <DrugInfoCard
-              title="Cannabis"
-              smallDescription="The most common form of cannabis is weed which is the dried leaves and flowering parts of a cannabis plant. Skunk is normally twice as strong as the other varieties with a particularly strong smell."
-              image={
-                <FontAwesome5 name="cannabis" size={ICON_SIZE} color="black" />
-              }
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("DrugInfo", { page: "Cocaine" })}
-            activeOpacity={0.8}
-          >
-            <DrugInfoCard
-              title="Cocaine"
-              smallDescription="Cocaine refers to a drug in a powder form or crystal form. The powder is usually mixed with substances such as corn starch, talcum powder and/or sugar or other drugs such as local anesthetics or amphetamines."
-              image={
-                <MaterialCommunityIcons
-                  name="weather-tornado"
-                  size={ICON_SIZE}
-                  color="black"
-                />
-              }
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("DrugInfo", { page: "Ecstasy" })}
-            activeOpacity={0.8}
-          >
-            <DrugInfoCard
-              title="Ecstasy"
-              smallDescription="As an amphetamine ecstasy is a central nervous system stimulant that increases the activity of the brain."
-              image={
-                <FontAwesome5 name="pills" size={ICON_SIZE} color="black" />
-              }
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate("DrugInfo", { page: "Ketamine" })
-            }
-            activeOpacity={0.8}
-          >
-            <DrugInfoCard
-              title="Ketamine"
-              smallDescription="A medication that is used to induce loss of consciousness, or anaesthesia. It can produce relaxation and relieve pain in humans and animals. It is a commonly used due to its hallucinogenic, tranquilizing and dissociative effects."
-              image={
-                <FontAwesome5 name="capsules" size={ICON_SIZE} color="black" />
-              }
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("DrugInfo", { page: "NOS" })}
-            activeOpacity={0.8}
-          >
-            <DrugInfoCard
-              title="NOS"
-              smallDescription="Nitrous oxide is a colourless gas that is commonly used for sedation and pain relief, but is also used by people to feel intoxicated or high.. It is commonly used by dentists and medical professionals to sedate patients undergoing minor medical procedures."
-              image={
-                <MaterialCommunityIcons
-                  name="diving-scuba-tank"
-                  size={ICON_SIZE}
-                  color="black"
-                />
-              }
-            />
-          </TouchableOpacity>
+          {cards(data)}
         </ScrollView>
       </View>
     </View>

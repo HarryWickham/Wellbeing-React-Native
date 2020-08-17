@@ -98,7 +98,6 @@ export default function App({ route, navigation }) {
 
   return (
     <Tab.Navigator
-      tabBar={(props) => <MyTabBar {...props} />}
       initialRouteName={page}
       tabBarOptions={{
         labelStyle: { fontSize: Platform.OS === "android" ? 9 : 6 },
@@ -107,7 +106,7 @@ export default function App({ route, navigation }) {
       }}
     >
       <Tab.Screen
-        name="CANNABIS"
+        name="Cannabis"
         component={Cannabis}
         options={{
           tabBarIcon: (props) => (
@@ -116,7 +115,7 @@ export default function App({ route, navigation }) {
         }}
       />
       <Tab.Screen
-        name="COCAINE"
+        name="Cocaine"
         component={Cocaine}
         options={{
           tabBarIcon: (props) => (
@@ -129,7 +128,7 @@ export default function App({ route, navigation }) {
         }}
       />
       <Tab.Screen
-        name="ECSTASY"
+        name="Ecstasy"
         component={Ecstasy}
         options={{
           tabBarIcon: (props) => (
@@ -138,7 +137,7 @@ export default function App({ route, navigation }) {
         }}
       />
       <Tab.Screen
-        name="KETAMINE"
+        name="Ketamine"
         component={Ketamine}
         options={{
           tabBarIcon: (props) => (

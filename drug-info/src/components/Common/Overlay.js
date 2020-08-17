@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Text, StyleSheet, View, Image } from "react-native";
 
 const Overlay = ({ title, description, image }) => {
-  const newLocal = 6;
   return (
     <View style={styles.viewStyle}>
       <View style={styles.imageViewStyle}>{image}</View>

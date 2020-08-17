@@ -6,13 +6,13 @@ import ConversationScrollView from "../components/Conversation/ConversationScrol
 
 const BACKGROUND_COLOUR = "#fbb959";
 
-const Home = ({ props }) => {
+const Home = ({ route }) => {
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
       style={styles.fullScreenStyle}
     >
-      <DrugInfoScrollView />
+      <DrugInfoScrollView data={route.params.data} />
       <MakingChoicesScrollView />
       <ConversationScrollView />
     </ScrollView>
