@@ -9,8 +9,8 @@ import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 
 const BACKGROUND_COLOUR = "#fbb959";
 
-function Cannabis() {
-  return <CannabisScreen />;
+function Cannabis({ route, data }) {
+  return <CannabisScreen data={route.params.data} />;
 }
 function Cocaine() {
   return <CocaineScreen />;
@@ -43,6 +43,7 @@ export default function App({ route, navigation }) {
       <Tab.Screen
         name="Cannabis"
         component={Cannabis}
+        initialParams={{ data: route.params.data }}
         options={{
           tabBarIcon: (props) => (
             <FontAwesome5 name="cannabis" size={20} color="black" />

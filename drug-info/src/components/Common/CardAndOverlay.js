@@ -29,20 +29,7 @@ const CardAndOverlay = ({
       <TouchableOpacity onPress={toggleOverlay} activeOpacity={0.8}>
         <Card title={title} smallDescription={smallDescription} image={image} />
       </TouchableOpacity>
-      <Overlay
-        isVisible={visible}
-        onBackdropPress={toggleOverlay}
-        style={{
-          shadowColor: "#000",
-          shadowOffset: {
-            width: 0,
-            height: 1,
-          },
-          shadowOpacity: 0.2,
-          shadowRadius: 1.41,
-          elevation: 2,
-        }}
-      >
+      <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
         <ScrollView
           bounces={false}
           style={{

@@ -62,7 +62,7 @@ function HomeStackScreen({ route }) {
       <HomeStack.Screen
         name="DrugInfo"
         component={DrugInfo}
-        initialParams={{ data: route.params.data.home }}
+        initialParams={{ data: route.params.data.druginfo }}
       />
     </HomeStack.Navigator>
   );

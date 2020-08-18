@@ -1,14 +1,19 @@
 import React, { Component } from "react";
-import { Text, View } from "react-native";
 import {
-  FontAwesome,
-  Entypo,
-  FontAwesome5,
   AntDesign,
-  MaterialIcons,
-  SimpleLineIcons,
-  MaterialCommunityIcons,
+  Entypo,
+  EvilIcons,
+  Feather,
+  FontAwesome,
+  FontAwesome5,
+  Fontisto,
+  Foundation,
   Ionicons,
+  MaterialCommunityIcons,
+  MaterialIcons,
+  Octicons,
+  SimpleLineIcons,
+  Zocial,
 } from "@expo/vector-icons";
 
 const Icons = ({ iconLib, iconName, ICON_SIZE }) => {
@@ -30,6 +35,18 @@ const Icons = ({ iconLib, iconName, ICON_SIZE }) => {
     return <SimpleLineIcons name={iconName} size={ICON_SIZE} color="black" />;
   } else if (iconLib == "Ionicons") {
     return <Ionicons name={iconName} size={ICON_SIZE} color="black" />;
+  } else if (iconLib == "EvilIcons") {
+    return <EvilIcons name={iconName} size={ICON_SIZE} color="black" />;
+  } else if (iconLib == "Feather") {
+    return <Feather name={iconName} size={ICON_SIZE} color="black" />;
+  } else if (iconLib == "Fontisto") {
+    return <Fontisto name={iconName} size={ICON_SIZE} color="black" />;
+  } else if (iconLib == "Foundation") {
+    return <Foundation name={iconName} size={ICON_SIZE} color="black" />;
+  } else if (iconLib == "Octicons") {
+    return <Octicons name={iconName} size={ICON_SIZE} color="black" />;
+  } else if (iconLib == "Zocial") {
+    return <Zocial name={iconName} size={ICON_SIZE} color="black" />;
   } else {
     return <FontAwesome5 name="skull-crossbones" size={24} color="black" />;
   }
