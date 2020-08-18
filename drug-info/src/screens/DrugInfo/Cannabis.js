@@ -12,6 +12,7 @@ function cards(data) {
       {data.cannabis.map((element) => {
         return (
           <HorizontalCard
+            key={element.title}
             title={element.title}
             description={element.smallDescription}
             image={
@@ -37,7 +38,6 @@ const Cannabis = ({ data }) => {
         }}
       >
         <Text style={{ fontSize: 30 }}>Cannabis</Text>
-        <Text style={{ fontSize: 20 }}>Scroll Down For More Information</Text>
         {cards(data)}
       </View>
     </ScrollView>

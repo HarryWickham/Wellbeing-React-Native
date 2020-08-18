@@ -1,46 +1,49 @@
 import React, { Component } from "react";
 import { Text, StyleSheet, View, ScrollView } from "react-native";
 import HorizontalCard from "../../components/Common/HorizontalCard";
-import {
-  FontAwesome,
-  Entypo,
-  FontAwesome5,
-  AntDesign,
-  MaterialIcons,
-  SimpleLineIcons,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
 
-export default class Cocaine extends Component {
-  render() {
-    return (
-      <ScrollView style={{ flex: 1, width: "100%" }}>
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "flex-start",
-            alignItems: "center",
-          }}
-        >
-          <Text style={{ textAlign: "center", fontSize: 30 }}>Cocaine</Text>
-          <Text style={{ textAlign: "center", fontSize: 20 }}>
-            Scroll Down For More Information
-          </Text>
+import Icons from "../../components/Common/Icons";
+
+const ICON_SIZE = 100;
+
+function cards(data) {
+  return (
+    <>
+      {data.cocaine.map((element) => {
+        return (
           <HorizontalCard
-            title="What is it?"
-            description="Cocaine refers to a drug in a powder form or crystal form. The powder is usually mixed with substances such as corn starch, talcum powder and/or sugar or other drugs such as local anesthetics or amphetamines."
+            key={element.title}
+            title={element.title}
+            description={element.smallDescription}
             image={
-              <MaterialCommunityIcons
-                name="weather-tornado"
-                size={100}
-                color="black"
+              <Icons
+                iconLib={element.iconLib}
+                iconName={element.iconName}
+                ICON_SIZE={ICON_SIZE}
               />
             }
           />
-        </View>
-      </ScrollView>
-    );
-  }
+        );
+      })}
+    </>
+  );
 }
+
+const Cocaine = ({ data }) => {
+  return (
+    <ScrollView>
+      <View
+        style={{
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 30 }}>Cocaine</Text>
+        {cards(data)}
+      </View>
+    </ScrollView>
+  );
+};
+
+export default Cocaine;
 
 const styles = StyleSheet.create({});

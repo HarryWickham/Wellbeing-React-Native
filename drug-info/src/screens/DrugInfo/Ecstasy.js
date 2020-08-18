@@ -1,40 +1,48 @@
 import React, { Component } from "react";
 import { Text, StyleSheet, View, ScrollView } from "react-native";
 import HorizontalCard from "../../components/Common/HorizontalCard";
-import {
-  FontAwesome,
-  Entypo,
-  FontAwesome5,
-  AntDesign,
-  MaterialIcons,
-  SimpleLineIcons,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
+import Icons from "../../components/Common/Icons";
 
-export default class Ecstasy extends Component {
-  render() {
-    return (
-      <ScrollView style={{ flex: 1, width: "100%" }}>
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "flex-start",
-            alignItems: "center",
-          }}
-        >
-          <Text style={{ textAlign: "center", fontSize: 30 }}>Ecstasy</Text>
-          <Text style={{ textAlign: "center", fontSize: 20 }}>
-            Scroll Down For More Information
-          </Text>
+const ICON_SIZE = 100;
+
+function cards(data) {
+  return (
+    <>
+      {data.ecstasy.map((element) => {
+        return (
           <HorizontalCard
-            title="What Is It?"
-            description="As an amphetamine ecstasy is a central nervous system stimulant that increases the activity of the brain."
-            image={<FontAwesome5 name="pills" size={100} color="black" />}
+            key={element.title}
+            title={element.title}
+            description={element.smallDescription}
+            image={
+              <Icons
+                iconLib={element.iconLib}
+                iconName={element.iconName}
+                ICON_SIZE={ICON_SIZE}
+              />
+            }
           />
-        </View>
-      </ScrollView>
-    );
-  }
+        );
+      })}
+    </>
+  );
 }
+
+const Ecstasy = ({ data }) => {
+  return (
+    <ScrollView>
+      <View
+        style={{
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 30 }}>Ecstasy</Text>
+        {cards(data)}
+      </View>
+    </ScrollView>
+  );
+};
+
+export default Ecstasy;
 
 const styles = StyleSheet.create({});

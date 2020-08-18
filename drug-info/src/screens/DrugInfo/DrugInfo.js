@@ -9,20 +9,20 @@ import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 
 const BACKGROUND_COLOUR = "#fbb959";
 
-function Cannabis({ route, data }) {
+function Cannabis({ route }) {
   return <CannabisScreen data={route.params.data} />;
 }
-function Cocaine() {
-  return <CocaineScreen />;
+function Cocaine({ route }) {
+  return <CocaineScreen data={route.params.data} />;
 }
-function Ecstasy() {
-  return <EcstasyScreen />;
+function Ecstasy({ route }) {
+  return <EcstasyScreen data={route.params.data} />;
 }
-function Ketamine() {
-  return <KetamineScreen />;
+function Ketamine({ route }) {
+  return <KetamineScreen data={route.params.data} />;
 }
-function NOS() {
-  return <NOSScreen />;
+function NOS({ route }) {
+  return <NOSScreen data={route.params.data} />;
 }
 
 const Tab = createMaterialTopTabNavigator();
@@ -53,6 +53,7 @@ export default function App({ route, navigation }) {
       <Tab.Screen
         name="Cocaine"
         component={Cocaine}
+        initialParams={{ data: route.params.data }}
         options={{
           tabBarIcon: (props) => (
             <MaterialCommunityIcons
@@ -66,6 +67,7 @@ export default function App({ route, navigation }) {
       <Tab.Screen
         name="Ecstasy"
         component={Ecstasy}
+        initialParams={{ data: route.params.data }}
         options={{
           tabBarIcon: (props) => (
             <FontAwesome5 name="pills" size={20} color="black" />
@@ -75,6 +77,7 @@ export default function App({ route, navigation }) {
       <Tab.Screen
         name="Ketamine"
         component={Ketamine}
+        initialParams={{ data: route.params.data }}
         options={{
           tabBarIcon: (props) => (
             <FontAwesome5 name="capsules" size={20} color="black" />
@@ -84,6 +87,7 @@ export default function App({ route, navigation }) {
       <Tab.Screen
         name="NOS"
         component={NOS}
+        initialParams={{ data: route.params.data }}
         options={{
           tabBarIcon: (props) => (
             <MaterialCommunityIcons

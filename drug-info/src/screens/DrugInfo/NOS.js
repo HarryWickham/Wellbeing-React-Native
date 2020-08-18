@@ -1,46 +1,48 @@
 import React, { Component } from "react";
 import { Text, StyleSheet, View, ScrollView } from "react-native";
 import HorizontalCard from "../../components/Common/HorizontalCard";
-import {
-  FontAwesome,
-  Entypo,
-  FontAwesome5,
-  AntDesign,
-  MaterialIcons,
-  SimpleLineIcons,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
+import Icons from "../../components/Common/Icons";
 
-export default class NOS extends Component {
-  render() {
-    return (
-      <ScrollView style={{ flex: 1, width: "100%" }}>
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "flex-start",
-            alignItems: "center",
-          }}
-        >
-          <Text style={{ textAlign: "center", fontSize: 30 }}>NOS</Text>
-          <Text style={{ textAlign: "center", fontSize: 20 }}>
-            Scroll Down For More Information
-          </Text>
+const ICON_SIZE = 100;
+
+function cards(data) {
+  return (
+    <>
+      {data.nos.map((element) => {
+        return (
           <HorizontalCard
-            title="What is it?"
-            description="Nitrous oxide is a colourless gas that is commonly used for sedation and pain relief, but is also used by people to feel intoxicated or high.. It is commonly used by dentists and medical professionals to sedate patients undergoing minor medical procedures."
+            key={element.title}
+            title={element.title}
+            description={element.smallDescription}
             image={
-              <MaterialCommunityIcons
-                name="diving-scuba-tank"
-                size={100}
-                color="black"
+              <Icons
+                iconLib={element.iconLib}
+                iconName={element.iconName}
+                ICON_SIZE={ICON_SIZE}
               />
             }
           />
-        </View>
-      </ScrollView>
-    );
-  }
+        );
+      })}
+    </>
+  );
 }
+
+const NOS = ({ data }) => {
+  return (
+    <ScrollView>
+      <View
+        style={{
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 30 }}>Cocaine</Text>
+        {cards(data)}
+      </View>
+    </ScrollView>
+  );
+};
+
+export default NOS;
 
 const styles = StyleSheet.create({});
