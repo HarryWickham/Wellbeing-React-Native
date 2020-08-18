@@ -13,8 +13,8 @@ const Home = ({ route }) => {
       style={styles.fullScreenStyle}
     >
       <DrugInfoScrollView data={route.params.data} />
-      <MakingChoicesScrollView />
-      <ConversationScrollView />
+      <MakingChoicesScrollView data={route.params.data} />
+      <ConversationScrollView data={route.params.data} />
     </ScrollView>
   );
 };

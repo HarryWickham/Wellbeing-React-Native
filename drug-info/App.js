@@ -57,12 +57,12 @@ function HomeStackScreen({ route }) {
       <HomeStack.Screen
         name="Home"
         component={HomeScreen}
-        initialParams={{ data: route.params.data }}
+        initialParams={{ data: route.params.data.home }}
       />
       <HomeStack.Screen
         name="DrugInfo"
         component={DrugInfo}
-        initialParams={{ data: route.params.data }}
+        initialParams={{ data: route.params.data.home }}
       />
     </HomeStack.Navigator>
   );
@@ -248,7 +248,7 @@ export default class App extends React.Component {
 async function loadData() {
   try {
     const result = await fetch(
-      "https://wellbeing-data.harrywickham.co.uk/data.json"
+      "https://wellbeing-data.harrywickham.co.uk/v1/data.json"
     );
     const data = await result.json();
     const jsonValue = JSON.stringify(data);
