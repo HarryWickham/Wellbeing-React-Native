@@ -1,12 +1,7 @@
 import React from "react";
 import { Text, View, ScrollView, StyleSheet } from "react-native";
 import MakingChoicesCardAndOverlay from "../Common/CardAndOverlay";
-import {
-  FontAwesome,
-  FontAwesome5,
-  Ionicons,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
+import Icons from "../Common/Icons";
 
 const ICON_SIZE = 100;
 
@@ -19,7 +14,13 @@ function cards(data) {
             key={element.title}
             title={element.title}
             smallDescription={element.smallDescription}
-            image={<FontAwesome name="close" size={ICON_SIZE} color="black" />}
+            image={
+              <Icons
+                iconLib={element.iconLib}
+                iconName={element.iconName}
+                ICON_SIZE={ICON_SIZE}
+              />
+            }
           />
         );
       })}

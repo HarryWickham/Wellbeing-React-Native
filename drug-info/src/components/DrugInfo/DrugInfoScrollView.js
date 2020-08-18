@@ -3,15 +3,7 @@ import { Text, View, Button, ScrollView, StyleSheet } from "react-native";
 import DrugInfoCard from "../Common/Card";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
-import {
-  FontAwesome,
-  Entypo,
-  FontAwesome5,
-  Foundation,
-  Ionicons,
-  AntDesign,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
+import Icons from "../Common/Icons";
 
 const ICON_SIZE = 100;
 
@@ -33,7 +25,11 @@ function cards(data) {
               smallDescription={element.smallDescription}
               largeDescription={element.largeDescription}
               image={
-                <FontAwesome5 name="cannabis" size={ICON_SIZE} color="black" />
+                <Icons
+                  iconLib={element.iconLib}
+                  iconName={element.iconName}
+                  ICON_SIZE={ICON_SIZE}
+                />
               }
             />
           </TouchableOpacity>

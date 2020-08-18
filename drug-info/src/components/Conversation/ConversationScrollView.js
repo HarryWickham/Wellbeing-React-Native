@@ -4,15 +4,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { Overlay } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 import ConversationCardAndOverlay from "../Common/CardAndOverlay";
-import {
-  FontAwesome,
-  Entypo,
-  FontAwesome5,
-  AntDesign,
-  MaterialIcons,
-  SimpleLineIcons,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
+import Icons from "../Common/Icons";
 
 const ICON_SIZE = 100;
 
@@ -25,7 +17,13 @@ function cards(data) {
             key={element.title}
             title={element.title}
             smallDescription={element.smallDescription}
-            image={<FontAwesome name="close" size={ICON_SIZE} color="black" />}
+            image={
+              <Icons
+                iconLib={element.iconLib}
+                iconName={element.iconName}
+                ICON_SIZE={ICON_SIZE}
+              />
+            }
           />
         );
       })}
