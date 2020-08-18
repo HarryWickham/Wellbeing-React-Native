@@ -1,5 +1,4 @@
 import React from "react";
-import { Text, View, TouchableOpacity, ScrollView } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import CannabisScreen from "./Cannabis";
 import CocaineScreen from "./Cocaine";
@@ -26,71 +25,6 @@ function NOS() {
   return <NOSScreen />;
 }
 
-function MyTabBar({ state, descriptors, navigation, position }) {
-  return (
-    <View style={{ flexDirection: "row", backgroundColor: "white" }}>
-      <ScrollView
-        horizontal
-        bounces={false}
-        showsHorizontalScrollIndicator={false}
-      >
-        {state.routes.map((route, index) => {
-          const { options } = descriptors[route.key];
-          const label =
-            options.tabBarLabel !== undefined
-              ? options.tabBarLabel
-              : options.title !== undefined
-              ? options.title
-              : route.name;
-
-          const isFocused = state.index === index;
-
-          const onPress = () => {
-            const event = navigation.emit({
-              type: "tabPress",
-              target: route.key,
-            });
-
-            if (!isFocused && !event.defaultPrevented) {
-              navigation.navigate(route.name);
-            }
-          };
-
-          // modify inputRange for custom behavior
-          const inputRange = state.routes.map((_, i) => i);
-
-          return (
-            <TouchableOpacity
-              accessibilityRole="button"
-              key={label}
-              accessibilityStates={isFocused ? ["selected"] : []}
-              accessibilityLabel={options.tabBarAccessibilityLabel}
-              testID={options.tabBarTestID}
-              onPress={onPress}
-              style={{
-                flex: 1,
-                borderBottomColor: isFocused ? "dodgerblue" : "white",
-                paddingVertical: 20,
-                borderBottomWidth: 2,
-                width: 80,
-              }}
-            >
-              <Text
-                style={{
-                  color: isFocused ? "dodgerblue" : "black",
-                  textAlign: "center",
-                }}
-              >
-                {label}
-              </Text>
-            </TouchableOpacity>
-          );
-        })}
-      </ScrollView>
-    </View>
-  );
-}
-
 const Tab = createMaterialTopTabNavigator();
 
 export default function App({ route, navigation }) {
@@ -100,7 +34,8 @@ export default function App({ route, navigation }) {
     <Tab.Navigator
       initialRouteName={page}
       tabBarOptions={{
-        labelStyle: { fontSize: Platform.OS === "android" ? 9 : 6 },
+        scrollEnabled: true,
+        labelStyle: 12,
         showLabel: true,
         showIcon: true,
       }}

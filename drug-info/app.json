@@ -13,9 +13,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -25,7 +23,7 @@
     "description": "",
     "githubUrl": "https://github.com/HarryWickham/Wellbeing-React-Native",
     "android": {
-      "package": "uk.co.harrywickham"
+      "package": "uk.co.harrywickham.wellbeing-data"
     }
   }
 }
