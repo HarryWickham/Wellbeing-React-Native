@@ -8,7 +8,7 @@ const ICON_SIZE = 100;
 function cards(data) {
   return (
     <>
-      {data.choices.map((element) => {
+      {data.home.choices.map((element) => {
         return (
           <MakingChoicesCardAndOverlay
             key={element.title}

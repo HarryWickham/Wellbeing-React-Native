@@ -11,23 +11,23 @@ function cards(data) {
   const navigation = useNavigation();
   return (
     <>
-      {data.drugs.map((element) => {
+      {data.druginfo.map((element) => {
         return (
           <TouchableOpacity
-            key={element.title}
+            key={element.name}
             onPress={() =>
-              navigation.navigate("DrugInfo", { page: element.title })
+              navigation.navigate("DrugInfo", { page: element.name })
             }
             activeOpacity={0.8}
           >
             <DrugInfoCard
-              title={element.title}
-              smallDescription={element.smallDescription}
-              largeDescription={element.largeDescription}
+              title={element.name}
+              smallDescription={element.info[0].smallDescription}
+              largeDescription={element.info[0].largeDescription}
               image={
                 <Icons
-                  iconLib={element.iconLib}
-                  iconName={element.iconName}
+                  iconLib={element.info[0].iconLib}
+                  iconName={element.info[0].iconName}
                   ICON_SIZE={ICON_SIZE}
                 />
               }

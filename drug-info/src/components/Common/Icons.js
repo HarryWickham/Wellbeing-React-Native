@@ -48,7 +48,7 @@ const Icons = ({ iconLib, iconName, ICON_SIZE }) => {
   } else if (iconLib == "Zocial") {
     return <Zocial name={iconName} size={ICON_SIZE} color="black" />;
   } else {
-    return <FontAwesome5 name="doesntExist" size={24} color="black" />;
+    return <FontAwesome5 name="skull-crossbones" size={24} color="black" />;
   }
 };
 

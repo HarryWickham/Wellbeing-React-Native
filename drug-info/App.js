@@ -57,7 +57,7 @@ function HomeStackScreen({ route }) {
       <HomeStack.Screen
         name="Home"
         component={HomeScreen}
-        initialParams={{ data: route.params.data.home }}
+        initialParams={{ data: route.params.data }}
       />
       <HomeStack.Screen
         name="DrugInfo"

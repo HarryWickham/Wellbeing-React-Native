@@ -11,7 +11,7 @@ const ICON_SIZE = 100;
 function cards(data) {
   return (
     <>
-      {data.conversation.map((element) => {
+      {data.home.conversation.map((element) => {
         return (
           <ConversationCardAndOverlay
             key={element.title}
