@@ -1,6 +1,7 @@
 import React from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { Text, StyleSheet, View, ScrollView, Dimensions } from "react-native";
+import HorizontalCardAndOverlay from "../../components/Common/HorizontalCardAndOverlay";
 import HorizontalCard from "../../components/Common/HorizontalCard";
 
 import Icons from "../../components/Common/Icons";
@@ -67,10 +68,10 @@ function cards(drug) {
     <>
       {drug.route.params.druginfo.map((element) => {
         return (
-          <HorizontalCard
+          <HorizontalCardAndOverlay
             key={element.title}
             title={element.title}
-            description={element.smallDescription}
+            smallDescription={element.smallDescription}
             image={
               <Icons
                 iconLib={element.iconLib}
