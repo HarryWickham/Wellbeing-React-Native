@@ -10,6 +10,9 @@ const BACKGROUND_COLOUR = "#fbb959";
 
 const ICON_SIZE = 100;
 
+const ICON_FOCUSED_COLOUR = Platform.OS === "android" ? "#1a73e7" : "#0279fe";
+const ICON_UNFOCUSED_COLOUR = Platform.OS === "android" ? "#717578" : "#919191";
+
 const Tab = createMaterialTopTabNavigator();
 
 export default function DrugInfo({ route, navigation, data }) {
@@ -18,6 +21,8 @@ export default function DrugInfo({ route, navigation, data }) {
     <Tab.Navigator
       initialRouteName={page}
       tabBarOptions={{
+        inactiveTintColor: ICON_UNFOCUSED_COLOUR,
+        activeTintColor: ICON_FOCUSED_COLOUR,
         scrollEnabled: true,
         labelStyle: 12,
         showLabel: true,
@@ -36,6 +41,9 @@ export default function DrugInfo({ route, navigation, data }) {
                 iconLib={drug.info[0].iconLib}
                 iconName={drug.info[0].iconName}
                 ICON_SIZE={20}
+                colour={
+                  props.focused ? ICON_FOCUSED_COLOUR : ICON_UNFOCUSED_COLOUR
+                }
               />
             ),
           }}

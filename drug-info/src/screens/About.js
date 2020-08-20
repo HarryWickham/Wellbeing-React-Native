@@ -1,15 +1,7 @@
 import React, { Component } from "react";
 import { Text, View, Button } from "react-native";
 import HorizontalCard from "../components/Common/HorizontalCard";
-import {
-  FontAwesome,
-  Entypo,
-  FontAwesome5,
-  AntDesign,
-  MaterialIcons,
-  SimpleLineIcons,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 
 const BACKGROUND_COLOUR = "#fbb959";
 

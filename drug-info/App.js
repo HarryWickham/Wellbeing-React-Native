@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Button, Text, View, Alert } from "react-native";
+import { Button, Text, View, Alert, Platform } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import {
   CardStyleInterpolators,
@@ -19,10 +19,9 @@ import AboutScreen from "./src/screens/About";
 import SearchScreen from "./src/screens/Search";
 import DrugInfo from "./src/screens/DrugInfo/DrugInfo";
 import AsyncStorage from "@react-native-community/async-storage";
-import { render } from "react-dom";
 
-const ICON_FOCUSED_COLOUR = "#146f29";
-const ICON_UNFOCUSED_COLOUR = "black";
+const ICON_FOCUSED_COLOUR = Platform.OS === "android" ? "#1a73e7" : "#0279fe";
+const ICON_UNFOCUSED_COLOUR = Platform.OS === "android" ? "#717578" : "#919191";
 const BACKGROUND_COLOUR = "#fbb959";
 
 function DetailsScreen() {
