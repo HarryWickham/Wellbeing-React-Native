@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View, Image } from "react-native";
+import { Text, StyleSheet, View, Image, Button } from "react-native";
+import * as Speech from "expo-speech";
 
 const Overlay = ({ title, description, image }) => {
   return (
@@ -9,6 +10,10 @@ const Overlay = ({ title, description, image }) => {
       <Text style={styles.descTextStyle} adjustsFontSizeToFit>
         {description}
       </Text>
+      <Button
+        title="Text To Speech"
+        onPress={() => Speech.speak(description)}
+      />
     </View>
   );
 };

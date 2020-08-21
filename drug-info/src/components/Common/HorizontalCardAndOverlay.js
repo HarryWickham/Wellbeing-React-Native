@@ -11,6 +11,7 @@ import Card from "./HorizontalCard";
 import OverlayComp from "./Overlay";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Overlay } from "react-native-elements";
+import * as Speech from "expo-speech";
 
 const { height, width } = Dimensions.get("window");
 
@@ -23,6 +24,7 @@ const HorizontalCardAndOverlay = ({
   const [visible, setVisible] = useState(false);
   const toggleOverlay = () => {
     setVisible(!visible);
+    Speech.stop();
   };
   return (
     <View style={{ width: width }}>
