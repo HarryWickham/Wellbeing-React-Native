@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Text, StyleSheet, View, Image, Button } from "react-native";
 import * as Speech from "expo-speech";
 
-const Overlay = ({ title, description, image }) => {
+const OverlayWithTTS = ({ title, description, image }) => {
   return (
     <View style={styles.viewStyle}>
       <View style={styles.imageViewStyle}>{image}</View>
@@ -10,6 +10,10 @@ const Overlay = ({ title, description, image }) => {
       <Text style={styles.descTextStyle} adjustsFontSizeToFit>
         {description}
       </Text>
+      <Button
+        title="Text To Speech"
+        onPress={() => Speech.speak(description)}
+      />
     </View>
   );
 };
@@ -30,6 +34,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
     fontSize: 20,
     color: "#008080",
+    paddingBottom: 10,
   },
   imageViewStyle: {
     alignItems: "center",
@@ -37,4 +42,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Overlay;
+export default OverlayWithTTS;

@@ -16,16 +16,16 @@ import GoesWrongScreen from "./GoesWrong";
 
 const BACKGROUND_COLOUR = "#fbb959";
 
-function Addiction() {
-  return <AddictionScreen />;
+function Addiction({ route }) {
+  return <AddictionScreen data={route.params.data} />;
 }
-function GoesWrong() {
-  return <GoesWrongScreen />;
+function GoesWrong({ route }) {
+  return <GoesWrongScreen data={route.params.data} />;
 }
 
 const Tab = createMaterialTopTabNavigator();
 
-const HelpHome = ({ navigation }) => {
+const HelpHome = ({ route }) => {
   return (
     <Tab.Navigator
       initialRouteName={"When It Goes Wrong"}
@@ -36,8 +36,16 @@ const HelpHome = ({ navigation }) => {
         inactiveTintColor: "black",
       }}
     >
-      <Tab.Screen name="When It Goes Wrong" component={GoesWrong} />
-      <Tab.Screen name="Addiction" component={Addiction} />
+      <Tab.Screen
+        name="When It Goes Wrong"
+        component={GoesWrong}
+        initialParams={{ data: route.params.data }}
+      />
+      <Tab.Screen
+        name="Addiction"
+        component={Addiction}
+        initialParams={{ data: route.params.data }}
+      />
     </Tab.Navigator>
   );
 };

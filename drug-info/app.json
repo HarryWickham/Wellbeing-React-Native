@@ -10,10 +10,24 @@
       "resizeMode": "contain",
       "backgroundColor": "#fbb959"
     },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "harry-wickham",
+            "project": "harry-wickham",
+            "authToken": "941bb551827449f2baa00bb2ec937288e6660b15603649bc93bc8fc21c567948"
+          }
+        }
+      ]
+    },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "bundleIdentifier": "uk.co.harrywickham.wellbeing"
     },

@@ -1,22 +1,24 @@
 import React, { Component } from "react";
 import { Text, View, Button, StyleSheet, ScrollView } from "react-native";
-import WhenItGoesWrong from "../../components/WhenItGoesWrong/WhenItGoesWrong";
+import HelpCard from "../../components/Common/HelpCard";
 
 const BACKGROUND_COLOUR = "#fbb959";
 
-const GoesWrong = ({ navigation }) => {
+const GoesWrong = ({ data }) => {
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-      style={styles.fullScreenStyle}
-    >
-      <WhenItGoesWrong />
-    </ScrollView>
+    <View showsVerticalScrollIndicator={false} style={styles.fullScreenStyle}>
+      <Text>Goes Wrong screen</Text>
+      <HelpCard
+        title={data.basicAdvice[1].title}
+        smallDescription={data.basicAdvice[0].title}
+      />
+    </View>
   );
 };
 const styles = StyleSheet.create({
   fullScreenStyle: {
     backgroundColor: BACKGROUND_COLOUR,
+    flex: 1,
   },
 });
 export default GoesWrong;

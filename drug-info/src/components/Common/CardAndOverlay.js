@@ -8,7 +8,7 @@ import {
   Dimensions,
 } from "react-native";
 import Card from "./Card";
-import OverlayComp from "./Overlay";
+import OverlayComp from "./OverlayWithTTS";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Overlay } from "react-native-elements";
 import * as Speech from "expo-speech";

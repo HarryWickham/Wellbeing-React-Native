@@ -3,6 +3,8 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import { Text, StyleSheet, View, ScrollView, Dimensions } from "react-native";
 import HorizontalCardAndOverlay from "../../components/Common/HorizontalCardAndOverlay";
 import HorizontalCard from "../../components/Common/HorizontalCard";
+import * as Sentry from "sentry-expo";
+import Frank from "../../components/Common/FrankFooter";
 
 import Icons from "../../components/Common/Icons";
 
@@ -34,7 +36,7 @@ export default function DrugInfo({ route, navigation, data }) {
           key={drug.name}
           name={drug.name}
           component={DrugScreen}
-          initialParams={{ druginfo: drug.info }}
+          initialParams={{ druginfo: drug }}
           options={{
             tabBarIcon: (props) => (
               <Icons
@@ -59,14 +61,18 @@ function DrugScreen(druginfo) {
 
 function Drug(drug) {
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: "#fbb959" }}>
       <View
         style={{
+          backgroundColor: "#FBD499",
           alignItems: "center",
         }}
       >
+        <Text style={styles.title}>{drug.route.params.druginfo.name}</Text>
+        <Text style={styles.subTitle}>Tap to expand</Text>
         {cards(drug)}
       </View>
+      <Frank />
     </ScrollView>
   );
 }
@@ -74,7 +80,7 @@ function Drug(drug) {
 function cards(drug) {
   return (
     <>
-      {drug.route.params.druginfo.map((element) => {
+      {drug.route.params.druginfo.info.map((element) => {
         return (
           <HorizontalCardAndOverlay
             key={element.title}
@@ -93,3 +99,17 @@ function cards(drug) {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  title: {
+    color: "black",
+    fontSize: 30,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  subTitle: {
+    color: "black",
+    fontSize: 20,
+    textAlign: "center",
+  },
+});
