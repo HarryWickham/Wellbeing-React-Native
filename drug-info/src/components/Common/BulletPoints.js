@@ -6,25 +6,30 @@ import {
   TouchableOpacity,
   ScrollView,
   Dimensions,
+  Button,
 } from "react-native";
 import OverlayComp from "./Overlay";
 import { Overlay } from "react-native-elements";
 import * as Speech from "expo-speech";
+import Communications from "react-native-communications";
 
 const { height, width } = Dimensions.get("window");
 
-const BulletPoints = ({ title, data }) => {
+const BulletPoints = ({ title, data, email, phone, contactTitle }) => {
   const [visible, setVisible] = useState(false);
   const toggleOverlay = () => {
     setVisible(!visible);
     Speech.stop();
   };
   return (
-    <View style={styles.viewStyle}>
-      <TouchableOpacity onPress={toggleOverlay} activeOpacity={0.8}>
-        <Text style={styles.titleTextStyle}>{title}</Text>
-        <Text style={styles.descTextStyle}>{bulletPointscontent(data)}</Text>
-      </TouchableOpacity>
+    <View>
+      <View style={styles.viewStyle}>
+        <TouchableOpacity onPress={toggleOverlay} activeOpacity={0.8}>
+          <Text style={styles.titleTextStyle}>{title}</Text>
+          <Text style={styles.descTextStyle}>{bulletPointscontent(data)}</Text>
+        </TouchableOpacity>
+      </View>
+      {buttons(email, phone, contactTitle)}
       <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
         <ScrollView
           bounces={false}
@@ -40,6 +45,75 @@ const BulletPoints = ({ title, data }) => {
     </View>
   );
 };
+
+function buttons(email, phone, contactTitle) {
+  if (email && phone != null) {
+    return (
+      <View>
+        <View
+          style={{
+            marginHorizontal: 10,
+            marginBottom: 10,
+            backgroundColor: "white",
+            borderRadius: 5,
+          }}
+        >
+          <Button
+            title={"E-mail " + contactTitle}
+            onPress={() =>
+              Communications.email([email], null, null, null, null)
+            }
+          />
+        </View>
+        <View
+          style={{
+            marginHorizontal: 10,
+            marginBottom: 10,
+            backgroundColor: "white",
+            borderRadius: 5,
+          }}
+        >
+          <Button
+            title={"Call " + contactTitle}
+            onPress={() => Communications.phonecall(phone, true)}
+          />
+        </View>
+      </View>
+    );
+  } else if (phone != null) {
+    return (
+      <View
+        style={{
+          marginHorizontal: 10,
+          marginBottom: 10,
+          backgroundColor: "white",
+          borderRadius: 5,
+        }}
+      >
+        <Button
+          title={"Call " + contactTitle}
+          onPress={() => Communications.phonecall(phone, true)}
+        />
+      </View>
+    );
+  } else if (email != null) {
+    return (
+      <View
+        style={{
+          marginHorizontal: 10,
+          marginBottom: 10,
+          backgroundColor: "white",
+          borderRadius: 5,
+        }}
+      >
+        <Button
+          title={"E-mail " + contactTitle}
+          onPress={() => Communications.email([email], null, null, null, null)}
+        />
+      </View>
+    );
+  }
+}
 
 function bulletPointscontent(data) {
   return (

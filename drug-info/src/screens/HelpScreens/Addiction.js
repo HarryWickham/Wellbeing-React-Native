@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Text, View, Button, StyleSheet, ScrollView } from "react-native";
 import BulletPoints from "../../components/Common/BulletPoints";
 import Frank from "../../components/Common/FrankFooter";
+import * as MailComposer from "expo-mail-composer";
+import Communications from "react-native-communications";
 
 const BACKGROUND_COLOUR = "#fbb959";
 
@@ -16,6 +18,9 @@ function externalAddiction(data) {
             key={element.title}
             title={element.title}
             data={element.bulletPoints}
+            email={element.email}
+            phone={element.phone}
+            contactTitle={element.contactTitle}
           />
         );
       })}
@@ -32,6 +37,9 @@ function internalAddiction(data) {
             key={element.title}
             title={element.title}
             data={element.bulletPoints}
+            email={element.email}
+            phone={element.phone}
+            contactTitle={element.contactTitle}
           />
         );
       })}
@@ -52,6 +60,7 @@ const Addiction = ({ data }) => {
           </View>
           {internalAddiction(data)}
         </View>
+
         <View style={{ backgroundColor: "#FBD499", marginTop: 10 }}>
           <View style={styles.titleViewStyle}>
             <Text style={styles.title}>
