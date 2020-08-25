@@ -1,24 +1,35 @@
-import React, { Component } from "react";
-import { Text, View, Button, StyleSheet, ScrollView } from "react-native";
-import HelpCard from "../../components/Common/HelpCard";
+import React, { useState } from "react";
+import {
+  Switch,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from "react-native";
+import BasicAdvice from "../../components/Help/BasicAdvice";
+import LifeSupport from "../../components/Help/LifeSupport";
 
-const BACKGROUND_COLOUR = "#fbb959";
-
-const GoesWrong = ({ data }) => {
+const GoesWrong = () => {
+  const [Collapsed, setCollapsed] = useState(false);
+  const toggleExpanded = () => {
+    setCollapsed(!Collapsed);
+  };
   return (
-    <View showsVerticalScrollIndicator={false} style={styles.fullScreenStyle}>
-      <Text>Goes Wrong screen</Text>
-      <HelpCard
-        title={data.basicAdvice[1].title}
-        smallDescription={data.basicAdvice[0].title}
-      />
+    <View style={styles.container}>
+      <ScrollView>
+        <LifeSupport />
+        <BasicAdvice />
+      </ScrollView>
     </View>
   );
 };
+
 const styles = StyleSheet.create({
-  fullScreenStyle: {
-    backgroundColor: BACKGROUND_COLOUR,
+  container: {
     flex: 1,
+    backgroundColor: "#fbb959",
   },
 });
+
 export default GoesWrong;
