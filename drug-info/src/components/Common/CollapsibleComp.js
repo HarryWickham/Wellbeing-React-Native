@@ -1,19 +1,12 @@
-import React, { useState } from "react";
-import {
-  Switch,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-} from "react-native";
+import React, { Component, useState, useEffect } from "react";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Collapsible from "react-native-collapsible";
-import Icons from "../Common/Icons";
-import HorizontalCardAndOverlay from "../Common/HorizontalCardAndOverlay";
+import Icons from "./Icons";
+import BulletPoints from "../Common/BulletPoints";
 
-const LifeSupport = ({ data }) => {
-  const [Collapsed, setCollapsed] = useState(false);
-  const [UpDown, setUpDown] = useState("up");
+const CollapsibleComp = ({ data, title, smallDescription }) => {
+  const [Collapsed, setCollapsed] = useState(true);
+  const [UpDown, setUpDown] = useState("down");
   const toggleExpanded = () => {
     setCollapsed(!Collapsed);
     if (Collapsed == false) {
@@ -26,39 +19,28 @@ const LifeSupport = ({ data }) => {
     <View style={styles.container}>
       <TouchableOpacity onPress={toggleExpanded}>
         <View style={styles.header}>
-          <Text style={styles.headerText}>Life Support</Text>
+          <Text style={styles.headerText}>{title}</Text>
           <View style={{ alignSelf: "flex-end" }}>
             <Icons iconLib="AntDesign" iconName={UpDown} />
           </View>
         </View>
       </TouchableOpacity>
       <Collapsible collapsed={Collapsed} align="center">
-        <View style={styles.content}>{card(data)}</View>
+        <View style={styles.content}>
+          <BulletPoints data={data} title={smallDescription} />
+        </View>
       </Collapsible>
     </View>
   );
 };
 
-export default LifeSupport;
+//
 
-function card(data) {
-  return (
-    <>
-      {data.map((element) => {
-        return (
-          <HorizontalCardAndOverlay
-            key={element.title}
-            title={element.title}
-            smallDescription={element.smallDescription}
-          />
-        );
-      })}
-    </>
-  );
-}
+export default CollapsibleComp;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: "#fbb959",
   },
   title: {
@@ -79,6 +61,22 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   content: {
+    padding: 20,
     backgroundColor: "#FBD499",
+  },
+  titleBox: {
+    borderWidth: 1,
+    borderRadius: 8,
+    backgroundColor: "#ffffff",
+    flexShrink: 1,
+    marginTop: 5,
+    marginHorizontal: 5,
+  },
+  titleTextStyle: {
+    margin: 5,
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#008080",
+    textAlign: "center",
   },
 });

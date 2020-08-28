@@ -10,16 +10,12 @@ import {
 import BasicAdvice from "../../components/Help/BasicAdvice";
 import LifeSupport from "../../components/Help/LifeSupport";
 
-const GoesWrong = () => {
-  const [Collapsed, setCollapsed] = useState(false);
-  const toggleExpanded = () => {
-    setCollapsed(!Collapsed);
-  };
+const GoesWrong = ({ data }) => {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <LifeSupport />
-        <BasicAdvice />
+        <LifeSupport data={data.lifeSupport} />
+        <BasicAdvice data={data.basicAdvice} />
       </ScrollView>
     </View>
   );

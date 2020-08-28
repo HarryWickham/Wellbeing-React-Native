@@ -72,7 +72,7 @@ function Drug(drug) {
         <Text style={styles.subTitle}>Tap to expand</Text>
         {cards(drug)}
       </View>
-      <Frank />
+      <Frank url={drug.route.params.druginfo.frankurl} />
     </ScrollView>
   );
 }

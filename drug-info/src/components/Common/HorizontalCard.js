@@ -4,17 +4,30 @@ import { Text, StyleSheet, View, Image, Dimensions } from "react-native";
 const { height, width } = Dimensions.get("window");
 
 const HorizontalCard = ({ title, smallDescription, image }) => {
-  return (
-    <View style={styles.viewStyle}>
-      <View style={styles.imageViewStyle}>{image}</View>
-      <View style={styles.viewStyle2}>
-        <Text style={styles.titleTextStyle}>{title}</Text>
-        <Text style={styles.descTextStyle} adjustsFontSizeToFit>
-          {smallDescription}
-        </Text>
+  if (image != null) {
+    return (
+      <View style={styles.viewStyle}>
+        <View style={styles.imageViewStyle}>{image}</View>
+        <View style={styles.viewStyle2}>
+          <Text style={styles.titleTextStyle}>{title}</Text>
+          <Text style={styles.descTextStyle} adjustsFontSizeToFit>
+            {smallDescription}
+          </Text>
+        </View>
       </View>
-    </View>
-  );
+    );
+  } else {
+    return (
+      <View style={styles.viewStyle}>
+        <View style={styles.viewStyle2}>
+          <Text style={styles.titleTextStyle}>{title}</Text>
+          <Text style={styles.descTextStyle} adjustsFontSizeToFit>
+            {smallDescription}
+          </Text>
+        </View>
+      </View>
+    );
+  }
 };
 
 const styles = StyleSheet.create({

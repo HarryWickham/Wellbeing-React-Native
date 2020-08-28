@@ -116,15 +116,38 @@ function buttons(email, phone, contactTitle) {
 }
 
 function bulletPointscontent(data) {
-  return (
-    <>
-      {data.map((element) => {
-        return (
-          <Text key={element.content}>{"• " + element.content + "\r\n"}</Text>
-        );
-      })}
-    </>
-  );
+  if (data != null) {
+    return (
+      <>
+        {data.map((element) => {
+          if (element.content != null) {
+            return (
+              <Text key={element.content}>
+                {"• " + element.content + "\r\n"}
+              </Text>
+            );
+          }
+          if (element.signs != null && element.action != null) {
+            return (
+              <Text key={element.signs}>
+                {"• " + element.signs + "\r\n" + "↳ " + element.action + "\r\n"}
+              </Text>
+            );
+          }
+          if (element.signs != null) {
+            return (
+              <Text key={element.signs}>{"• " + element.signs + "\r\n"}</Text>
+            );
+          }
+          if (element.action != null) {
+            return (
+              <Text key={element.action}>{" ↳ " + element.action + "\r\n"}</Text>
+            );
+          }
+        })}
+      </>
+    );
+  }
 }
 
 const styles = StyleSheet.create({

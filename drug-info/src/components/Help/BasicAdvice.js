@@ -7,40 +7,31 @@ import {
   View,
   TouchableOpacity,
 } from "react-native";
-import Collapsible from "react-native-collapsible";
-import Icons from "../Common/Icons";
 
-const BasicAdvice = () => {
-  const [Collapsed, setCollapsed] = useState(true);
-  const [UpDown, setUpDown] = useState("down");
-  const toggleExpanded = () => {
-    setCollapsed(!Collapsed);
-    if (Collapsed == false) {
-      setUpDown("down");
-    } else {
-      setUpDown("up");
-    }
-  };
-  return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={toggleExpanded}>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>Basic Advice</Text>
-          <View style={{ alignSelf: "flex-end" }}>
-            <Icons iconLib="AntDesign" iconName={UpDown} />
-          </View>
-        </View>
-      </TouchableOpacity>
-      <Collapsible collapsed={Collapsed} align="center">
-        <View style={styles.content}>
-          <Text>Add components here</Text>
-        </View>
-      </Collapsible>
-    </View>
-  );
+import CollapsibleComp from "../Common/CollapsibleComp";
+
+const BasicAdvice = ({ data }) => {
+  return <View style={styles.container}>{CollapsibleComps(data)}</View>;
 };
 
 export default BasicAdvice;
+
+function CollapsibleComps(data) {
+  return (
+    <>
+      {data.map((element) => {
+        return (
+          <CollapsibleComp
+            key={element.title}
+            data={element.bulletPoints}
+            title={element.title}
+            smallDescription={element.smallDescription}
+          />
+        );
+      })}
+    </>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
