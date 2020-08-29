@@ -11,7 +11,9 @@ const { height, width } = Dimensions.get("window");
 
 export default function FrankFooter(url) {
   return (
-    <TouchableOpacity onPress={() => Linking.openURL(url.url)}>
+    <TouchableOpacity
+      onPress={() => Linking.openURL(url.url || "https://talktofrank.com/")}
+    >
       <Image
         source={require("../../../assets/footer.png")}
         style={{

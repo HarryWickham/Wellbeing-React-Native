@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Text, View, Button } from "react-native";
 import HorizontalCard from "../components/Common/HorizontalCard";
 import { FontAwesome } from "@expo/vector-icons";
-import { WebView } from "react-native-webview";
 
 const BACKGROUND_COLOUR = "#fbb959";
 
