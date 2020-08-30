@@ -1,45 +1,17 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { View, Text, FlatList, ActivityIndicator, Alert } from "react-native";
 import { ListItem, SearchBar } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 
-class Search extends Component {
-  constructor(props) {
-    super(props);
+const Search = ({ route }) => {
+  console.log("search", route.params.data.druginfo);
+  const [data, setdata] = useState([route.params.data.druginfo]);
+  const [arrayholder, setarrayholder] = useState([route.params.data.druginfo]);
+  const [value, setvalue] = useState();
 
-    this.state = {
-      loading: false,
-      data: [],
-      error: null,
-    };
+  const navigation = useNavigation();
 
-    this.arrayholder = [];
-  }
-
-  componentDidMount() {
-    this.makeRemoteRequest();
-  }
-
-  makeRemoteRequest = () => {
-    const url = `https://wellbeing-data.harrywickham.co.uk/v1/data`;
-    this.setState({ loading: true });
-
-    fetch(url)
-      .then((res) => res.json())
-      .then((res) => {
-        this.setState({
-          data: res.druginfo,
-          error: res.error || null,
-          loading: false,
-        });
-        this.arrayholder = res.druginfo;
-      })
-      .catch((error) => {
-        this.setState({ error, loading: false });
-      });
-  };
-
-  renderSeparator = () => {
+  function renderSeparator() {
     return (
       <View
         style={{
@@ -50,69 +22,51 @@ class Search extends Component {
         }}
       />
     );
-  };
+  }
 
-  searchFilterFunction = (text) => {
-    this.setState({
-      value: text,
-    });
-
-    const newData = this.arrayholder.filter((item) => {
-      const itemData = `${item.name.toUpperCase()}`;
+  function searchFilterFunction(text) {
+    //setvalue(text);
+    const newData = arrayholder.filter((item) => {
+      const itemData = item.name.toUpperCase();
       const textData = text.toUpperCase();
-
+      //setdata(newData);
       return itemData.indexOf(textData) > -1;
     });
+  }
 
-    this.setState({
-      data: newData,
-    });
-  };
-
-  renderHeader = () => {
+  function renderHeader() {
     return (
       <SearchBar
         placeholder="Type Here..."
         lightTheme
         round
-        onChangeText={(text) => this.searchFilterFunction(text)}
+        onChangeText={(text) => searchFilterFunction(text)}
         autoCorrect={false}
-        value={this.state.value}
+        value={value}
       />
     );
-  };
-
-  render() {
-    if (this.state.loading) {
-      return (
-        <View
-          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-        >
-          <ActivityIndicator />
-        </View>
-      );
-    }
-    return (
-      <View style={{ flex: 1 }}>
-        <FlatList
-          data={this.state.data}
-          renderItem={({ item }) => (
-            <ListItem
-              title={`${item.name}`}
-              onPress={() =>
-                this.props.navigation.navigate("Drug Information", {
-                  page: item.name,
-                })
-              }
-            />
-          )}
-          keyExtractor={(item) => item.name}
-          ItemSeparatorComponent={this.renderSeparator}
-          ListHeaderComponent={this.renderHeader}
-        />
-      </View>
-    );
   }
-}
+
+  return (
+    <View style={{ flex: 1 }}>
+      <FlatList
+        data={data}
+        renderItem={({ item }) => (
+          <ListItem
+            title={item.name}
+            onPress={() =>
+              navigation.navigate("Drug Information", {
+                page: item.name,
+              })
+            }
+          />
+        )}
+        keyExtractor={(item) => item.name}
+        ItemSeparatorComponent={renderSeparator()}
+        ListHeaderComponent={renderHeader()}
+      />
+    </View>
+  );
+};
 
 export default Search;
