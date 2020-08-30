@@ -1,25 +1,26 @@
 import React, { Component } from "react";
-import { Text, View, Button } from "react-native";
+import { Text, ScrollView, Button, View } from "react-native";
 import HorizontalCard from "../components/Common/HorizontalCard";
 import { FontAwesome } from "@expo/vector-icons";
+import HorizontalCardAndOverlay from "../components/Common/HorizontalCardAndOverlay";
 
 const BACKGROUND_COLOUR = "#fbb959";
 
-const About = ({ navigation }) => {
+const About = ({ route }) => {
+  const data = route.params.data;
   return (
     <View
       style={{
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
         backgroundColor: BACKGROUND_COLOUR,
       }}
     >
-      <Text>About screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate("Details")}
-      />
+      <ScrollView>
+        <HorizontalCardAndOverlay
+          title="Disclaimer: "
+          smallDescription={data.disclaimer}
+        />
+      </ScrollView>
     </View>
   );
 };

@@ -67,7 +67,7 @@ function HomeStackScreen({ route }) {
         initialParams={{ data: route.params.data }}
       />
       <HomeStack.Screen
-        name="DrugInfo"
+        name="Drug Information"
         component={DrugInfo}
         initialParams={{ data: route.params.data.druginfo }}
       />
@@ -77,7 +77,7 @@ function HomeStackScreen({ route }) {
 
 const AboutStack = createStackNavigator();
 
-function AboutStackScreen() {
+function AboutStackScreen({ route }) {
   return (
     <AboutStack.Navigator
       screenOptions={{
@@ -89,7 +89,11 @@ function AboutStackScreen() {
         },
       }}
     >
-      <AboutStack.Screen name="About" component={AboutScreen} />
+      <AboutStack.Screen
+        name="About"
+        component={AboutScreen}
+        initialParams={{ data: route.params.data.about }}
+      />
       <AboutStack.Screen name="Details" component={DetailsScreen} />
     </AboutStack.Navigator>
   );
@@ -238,6 +242,7 @@ export default class App extends React.Component {
           <Tab.Screen
             name="About"
             component={AboutStackScreen}
+            initialParams={{ data: this.state.data }}
             options={{
               tabBarIcon: (props) => (
                 <FontAwesome
@@ -260,7 +265,7 @@ export default class App extends React.Component {
 async function loadData() {
   try {
     const result = await fetch(
-      "https://wellbeing-data.harrywickham.co.uk/v2/data.json"
+      "https://wellbeing-data.harrywickham.co.uk/v1/data.json"
     );
     const data = await result.json();
     const jsonValue = JSON.stringify(data);

@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "flex-start",
     borderRadius: 8,
+    paddingBottom: 5,
   },
   titleTextStyle: {
     margin: 5,
