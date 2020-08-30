@@ -20,6 +20,7 @@ import SearchScreen from "./src/screens/Search";
 import DrugInfo from "./src/screens/DrugInfo/DrugInfo";
 import AsyncStorage from "@react-native-community/async-storage";
 import * as Sentry from "sentry-expo";
+import Onboarding from "react-native-onboarding-swiper";
 
 Sentry.init({
   dsn:
@@ -125,7 +126,7 @@ function HelpStackScreen({ route }) {
 
 const SearchStack = createStackNavigator();
 
-function SearchStackScreen() {
+function SearchStackScreen({ route }) {
   return (
     <SearchStack.Navigator
       screenOptions={{
@@ -137,7 +138,11 @@ function SearchStackScreen() {
         },
       }}
     >
-      <SearchStack.Screen name="Search" component={SearchScreen} />
+      <SearchStack.Screen
+        name="Search"
+        component={SearchScreen}
+        initialParams={{ data: route.params.data }}
+      />
       <SearchStack.Screen name="Details" component={DetailsScreen} />
     </SearchStack.Navigator>
   );
@@ -181,7 +186,6 @@ export default class App extends React.Component {
     if (!this.state.appIsReady) {
       return null;
     }
-
     return (
       <NavigationContainer>
         <Tab.Navigator
@@ -211,6 +215,7 @@ export default class App extends React.Component {
           <Tab.Screen
             name="Search"
             component={SearchStackScreen}
+            initialParams={{ data: this.state.data }}
             options={{
               tabBarIcon: (props) => (
                 <FontAwesome5
