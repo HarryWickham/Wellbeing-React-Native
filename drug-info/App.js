@@ -141,7 +141,7 @@ function SearchStackScreen({ route }) {
       <SearchStack.Screen
         name="Search"
         component={SearchScreen}
-        initialParams={{ data: route.params.data.druginfo }}
+        initialParams={{ data: route.params.data.search }}
       />
       <SearchStack.Screen name="Details" component={DetailsScreen} />
     </SearchStack.Navigator>
@@ -191,6 +191,7 @@ export default class App extends React.Component {
         <Tab.Navigator
           initialRouteName="Home"
           tabBarOptions={{
+            keyboardHidesTabBar: true,
             inactiveTintColor: ICON_UNFOCUSED_COLOUR,
             activeTintColor: ICON_FOCUSED_COLOUR,
           }}

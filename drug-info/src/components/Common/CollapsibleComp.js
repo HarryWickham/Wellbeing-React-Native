@@ -21,7 +21,7 @@ const CollapsibleComp = ({ data, title, smallDescription }) => {
         <View style={styles.header}>
           <Text style={styles.headerText}>{title}</Text>
           <View style={{ alignSelf: "flex-end" }}>
-            <Icons iconLib="AntDesign" iconName={UpDown} />
+            <Icons iconLib="AntDesign" iconName={UpDown} ICON_SIZE={30} />
           </View>
         </View>
       </TouchableOpacity>

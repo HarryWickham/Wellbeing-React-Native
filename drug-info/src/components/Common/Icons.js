@@ -43,11 +43,7 @@ const Icons = ({ iconLib, iconName, ICON_SIZE, colour }) => {
     );
   } else if (iconLib == "AntDesign") {
     return (
-      <AntDesign
-        name={iconName}
-        size={ICON_SIZE || 30}
-        color={colour || "black"}
-      />
+      <AntDesign name={iconName} size={ICON_SIZE} color={colour || "black"} />
     );
   } else if (iconLib == "MaterialIcons") {
     return (

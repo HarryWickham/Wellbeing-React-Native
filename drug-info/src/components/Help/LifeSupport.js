@@ -28,7 +28,7 @@ const LifeSupport = ({ data }) => {
         <View style={styles.header}>
           <Text style={styles.headerText}>Life Support</Text>
           <View style={{ alignSelf: "flex-end" }}>
-            <Icons iconLib="AntDesign" iconName={UpDown} />
+            <Icons iconLib="AntDesign" iconName={UpDown} ICON_SIZE={30} />
           </View>
         </View>
       </TouchableOpacity>
