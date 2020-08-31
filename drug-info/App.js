@@ -141,7 +141,7 @@ function SearchStackScreen({ route }) {
       <SearchStack.Screen
         name="Search"
         component={SearchScreen}
-        initialParams={{ data: route.params.data }}
+        initialParams={{ data: route.params.data.druginfo }}
       />
       <SearchStack.Screen name="Details" component={DetailsScreen} />
     </SearchStack.Navigator>
