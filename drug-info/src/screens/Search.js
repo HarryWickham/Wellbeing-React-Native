@@ -7,7 +7,6 @@ class Search extends Component {
     super(props);
 
     this.state = {
-      infodata: this.props.infodata,
       data: [],
     };
 
