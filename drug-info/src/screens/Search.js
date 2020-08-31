@@ -1,43 +1,25 @@
 import React, { Component } from "react";
 import { View, Text, FlatList, ActivityIndicator, Alert } from "react-native";
 import { ListItem, SearchBar } from "react-native-elements";
-import { useNavigation } from "@react-navigation/native";
 
 class Search extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      loading: false,
+      infodata: this.props.infodata,
       data: [],
-      error: null,
     };
 
     this.arrayholder = [];
   }
 
   componentDidMount() {
-    this.makeRemoteRequest();
+    this.setState({
+      data: this.props.route.params.data,
+    });
+    this.arrayholder = this.props.route.params.data;
   }
-
-  makeRemoteRequest = () => {
-    const url = `https://wellbeing-data.harrywickham.co.uk/v1/data`;
-    this.setState({ loading: true });
-
-    fetch(url)
-      .then((res) => res.json())
-      .then((res) => {
-        this.setState({
-          data: res.druginfo,
-          error: res.error || null,
-          loading: false,
-        });
-        this.arrayholder = res.druginfo;
-      })
-      .catch((error) => {
-        this.setState({ error, loading: false });
-      });
-  };
 
   renderSeparator = () => {
     return (
@@ -83,15 +65,6 @@ class Search extends Component {
   };
 
   render() {
-    if (this.state.loading) {
-      return (
-        <View
-          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-        >
-          <ActivityIndicator />
-        </View>
-      );
-    }
     return (
       <View style={{ flex: 1 }}>
         <FlatList
