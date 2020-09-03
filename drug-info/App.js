@@ -1,5 +1,12 @@
 import * as React from "react";
-import { Button, Text, View, Alert, Platform } from "react-native";
+import {
+  Button,
+  Text,
+  View,
+  Alert,
+  Platform,
+  SafeAreaView,
+} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import {
   CardStyleInterpolators,
@@ -172,10 +179,10 @@ export default class App extends React.Component {
       });
     } catch (e) {
       console.log(e);
-      Sentry.captureException(new Error("connection to server error"));
+      Sentry.captureException(new Error("Connection to server error"));
       Alert.alert(
         "Connection To Server Unavailable",
-        "Please Connect To The Internt To Continue",
+        "Please Connect To The Internet To Continue",
         [{ text: "Refresh", onPress: () => this.prepareResources() }],
         { cancelable: false }
       );
@@ -191,6 +198,18 @@ export default class App extends React.Component {
         <Tab.Navigator
           initialRouteName="Home"
           tabBarOptions={{
+            tabStyle: {
+              transform:
+                Platform.OS === "android"
+                  ? [{ translateY: -5 }]
+                  : [{ translateY: -15 }],
+              backgroundColor: "white",
+              borderTopWidth: 1,
+              borderColor: "#B8B8B8",
+            },
+            style: {
+              backgroundColor: "white",
+            },
             keyboardHidesTabBar: true,
             inactiveTintColor: ICON_UNFOCUSED_COLOUR,
             activeTintColor: ICON_FOCUSED_COLOUR,
