@@ -25,9 +25,9 @@ class Search extends Component {
     return (
       <View
         style={{
-          height: 1,
+          height: 2,
           width: "100%",
-          backgroundColor: "#CED0CE",
+          backgroundColor: "#fbb959",
         }}
       />
     );
@@ -64,7 +64,7 @@ class Search extends Component {
   };
 
   render() {
-    const ITEMCOLOUR = "#fff";
+    const ITEMCOLOUR = "#FBD499";
     return (
       <View style={{ flex: 1, backgroundColor: "#fbb959" }}>
         <FlatList
@@ -82,6 +82,7 @@ class Search extends Component {
               </View>
               <ListItem
                 underlayColor={"#fbb959"}
+                containerStyle={{backgroundColor: ITEMCOLOUR}}
                 style={{ flex: 1, backgroundColor: ITEMCOLOUR }}
                 title={`${item.title}`}
                 onPress={() =>
