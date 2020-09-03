@@ -1,38 +1,26 @@
 import React, { Component } from "react";
-import { Text, View, Button } from "react-native";
+import { Text, ScrollView, Button, View } from "react-native";
 import HorizontalCard from "../components/Common/HorizontalCard";
-import {
-  FontAwesome,
-  Entypo,
-  FontAwesome5,
-  AntDesign,
-  MaterialIcons,
-  SimpleLineIcons,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
+import HorizontalCardAndOverlay from "../components/Common/HorizontalCardAndOverlay";
 
 const BACKGROUND_COLOUR = "#fbb959";
 
-const About = ({ navigation }) => {
+const About = ({ route }) => {
+  const data = route.params.data;
   return (
     <View
       style={{
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
         backgroundColor: BACKGROUND_COLOUR,
       }}
     >
-      <HorizontalCard
-        title="Choose Wisely"
-        description="'Choose a time to talk in privacy when you know you won't be interrupted. It might be good to be on a walk, playing a sport, or doing an activity to make the situation less intense, but still with room to intentionally talk."
-        image={<FontAwesome name="tree" size={100} color="black" />}
-      />
-      <Text>About screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate("Details")}
-      />
+      <ScrollView>
+        <HorizontalCardAndOverlay
+          title="Disclaimer: "
+          smallDescription={data.disclaimer}
+        />
+      </ScrollView>
     </View>
   );
 };

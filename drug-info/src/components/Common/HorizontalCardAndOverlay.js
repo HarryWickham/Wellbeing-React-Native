@@ -7,7 +7,7 @@ import {
   StyleSheet,
   Dimensions,
 } from "react-native";
-import Card from "./Card";
+import Card from "./HorizontalCard";
 import OverlayComp from "./OverlayWithTTS";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Overlay } from "react-native-elements";
@@ -15,7 +15,7 @@ import * as Speech from "expo-speech";
 
 const { height, width } = Dimensions.get("window");
 
-const CardAndOverlay = ({
+const HorizontalCardAndOverlay = ({
   title,
   smallDescription,
   largeDescription,
@@ -27,7 +27,7 @@ const CardAndOverlay = ({
     Speech.stop();
   };
   return (
-    <View>
+    <View style={{ width: width }}>
       <TouchableOpacity onPress={toggleOverlay} activeOpacity={0.8}>
         <Card title={title} smallDescription={smallDescription} image={image} />
       </TouchableOpacity>
@@ -53,4 +53,4 @@ const CardAndOverlay = ({
 
 const styles = StyleSheet.create({});
 
-export default CardAndOverlay;
+export default HorizontalCardAndOverlay;

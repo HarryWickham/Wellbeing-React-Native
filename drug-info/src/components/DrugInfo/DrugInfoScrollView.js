@@ -16,7 +16,7 @@ function cards(data) {
           <TouchableOpacity
             key={element.name}
             onPress={() =>
-              navigation.navigate("DrugInfo", { page: element.name })
+              navigation.navigate("Drug Information", { page: element.name })
             }
             activeOpacity={0.8}
           >

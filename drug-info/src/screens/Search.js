@@ -1,25 +1,104 @@
 import React, { Component } from "react";
-import { Text, View, Button } from "react-native";
+import { View, Text, FlatList, ActivityIndicator, Alert } from "react-native";
+import { ListItem, SearchBar } from "react-native-elements";
+import Icon from "../components/Common/Icons";
 
-const BACKGROUND_COLOUR = "#fbb959";
+class Search extends Component {
+  constructor(props) {
+    super(props);
 
-const Search = ({ navigation }) => {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: BACKGROUND_COLOUR,
-      }}
-    >
-      <Text>Search screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate("Details")}
+    this.state = {
+      data: [],
+    };
+
+    this.arrayholder = [];
+  }
+
+  componentDidMount() {
+    this.setState({
+      data: this.props.route.params.data,
+    });
+    this.arrayholder = this.props.route.params.data;
+  }
+
+  renderSeparator = () => {
+    return (
+      <View
+        style={{
+          height: 1,
+          width: "100%",
+          backgroundColor: "#CED0CE",
+        }}
       />
-    </View>
-  );
-};
+    );
+  };
+
+  searchFilterFunction = (text) => {
+    this.setState({
+      value: text,
+    });
+
+    const newData = this.arrayholder.filter((item) => {
+      const itemData = `${item.title.toUpperCase()}`;
+      const textData = text.toUpperCase();
+
+      return itemData.indexOf(textData) > -1;
+    });
+
+    this.setState({
+      data: newData,
+    });
+  };
+
+  renderHeader = () => {
+    return (
+      <SearchBar
+        placeholder="Type Here..."
+        lightTheme
+        round
+        onChangeText={(text) => this.searchFilterFunction(text)}
+        autoCorrect={false}
+        value={this.state.value}
+      />
+    );
+  };
+
+  render() {
+    const ITEMCOLOUR = "#fff";
+    return (
+      <View style={{ flex: 1, backgroundColor: "#fbb959" }}>
+        <FlatList
+          data={this.state.data}
+          renderItem={({ item }) => (
+            <View style={{ flexDirection: "row", backgroundColor: ITEMCOLOUR }}>
+              <View
+                style={{ width: 50, justifyContent: "center", marginLeft: 5 }}
+              >
+                <Icon
+                  iconLib={item.iconLib}
+                  iconName={item.iconName}
+                  ICON_SIZE={40}
+                />
+              </View>
+              <ListItem
+                underlayColor={"#fbb959"}
+                style={{ flex: 1, backgroundColor: ITEMCOLOUR }}
+                title={`${item.title}`}
+                onPress={() =>
+                  this.props.navigation.navigate("Drug Information", {
+                    page: item.title,
+                  })
+                }
+              ></ListItem>
+            </View>
+          )}
+          keyExtractor={(item) => item.title}
+          ItemSeparatorComponent={this.renderSeparator}
+          ListHeaderComponent={this.renderHeader}
+        />
+      </View>
+    );
+  }
+}
 
 export default Search;

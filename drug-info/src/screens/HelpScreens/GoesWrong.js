@@ -1,22 +1,31 @@
-import React, { Component } from "react";
-import { Text, View, Button, StyleSheet, ScrollView } from "react-native";
-import WhenItGoesWrong from "../../components/WhenItGoesWrong/WhenItGoesWrong";
+import React, { useState } from "react";
+import {
+  Switch,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from "react-native";
+import BasicAdvice from "../../components/Help/BasicAdvice";
+import LifeSupport from "../../components/Help/LifeSupport";
 
-const BACKGROUND_COLOUR = "#fbb959";
-
-const GoesWrong = ({ navigation }) => {
+const GoesWrong = ({ data }) => {
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-      style={styles.fullScreenStyle}
-    >
-      <WhenItGoesWrong />
-    </ScrollView>
+    <View style={styles.container}>
+      <ScrollView>
+        <LifeSupport data={data.lifeSupport} />
+        <BasicAdvice data={data.basicAdvice} />
+      </ScrollView>
+    </View>
   );
 };
+
 const styles = StyleSheet.create({
-  fullScreenStyle: {
-    backgroundColor: BACKGROUND_COLOUR,
+  container: {
+    flex: 1,
+    backgroundColor: "#fbb959",
   },
 });
+
 export default GoesWrong;

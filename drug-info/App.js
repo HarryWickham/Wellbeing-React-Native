@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Button, Text, View, Alert } from "react-native";
+import { Button, Text, View, Alert, Platform } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import {
   CardStyleInterpolators,
@@ -19,10 +19,18 @@ import AboutScreen from "./src/screens/About";
 import SearchScreen from "./src/screens/Search";
 import DrugInfo from "./src/screens/DrugInfo/DrugInfo";
 import AsyncStorage from "@react-native-community/async-storage";
-import { render } from "react-dom";
+import * as Sentry from "sentry-expo";
+import Onboarding from "react-native-onboarding-swiper";
 
-const ICON_FOCUSED_COLOUR = "#146f29";
-const ICON_UNFOCUSED_COLOUR = "black";
+Sentry.init({
+  dsn:
+    "https://7d0d7ccbb01843f4ab9ca74797e71269@o437910.ingest.sentry.io/5401009",
+  enableInExpoDevelopment: true,
+  debug: true,
+});
+
+const ICON_FOCUSED_COLOUR = Platform.OS === "android" ? "#1a73e7" : "#0279fe";
+const ICON_UNFOCUSED_COLOUR = Platform.OS === "android" ? "#717578" : "#919191";
 const BACKGROUND_COLOUR = "#fbb959";
 
 function DetailsScreen() {
@@ -60,7 +68,7 @@ function HomeStackScreen({ route }) {
         initialParams={{ data: route.params.data }}
       />
       <HomeStack.Screen
-        name="DrugInfo"
+        name="Drug Information"
         component={DrugInfo}
         initialParams={{ data: route.params.data.druginfo }}
       />
@@ -70,7 +78,7 @@ function HomeStackScreen({ route }) {
 
 const AboutStack = createStackNavigator();
 
-function AboutStackScreen() {
+function AboutStackScreen({ route }) {
   return (
     <AboutStack.Navigator
       screenOptions={{
@@ -82,7 +90,11 @@ function AboutStackScreen() {
         },
       }}
     >
-      <AboutStack.Screen name="About" component={AboutScreen} />
+      <AboutStack.Screen
+        name="About"
+        component={AboutScreen}
+        initialParams={{ data: route.params.data.about }}
+      />
       <AboutStack.Screen name="Details" component={DetailsScreen} />
     </AboutStack.Navigator>
   );
@@ -90,7 +102,7 @@ function AboutStackScreen() {
 
 const HelpStack = createStackNavigator();
 
-function HelpStackScreen() {
+function HelpStackScreen({ route }) {
   return (
     <HelpStack.Navigator
       screenOptions={{
@@ -102,7 +114,11 @@ function HelpStackScreen() {
         },
       }}
     >
-      <HelpStack.Screen name="Help" component={HelpScreen} />
+      <HelpStack.Screen
+        name="Help"
+        component={HelpScreen}
+        initialParams={{ data: route.params.data.help }}
+      />
       <HelpStack.Screen name="Details" component={DetailsScreen} />
     </HelpStack.Navigator>
   );
@@ -110,7 +126,7 @@ function HelpStackScreen() {
 
 const SearchStack = createStackNavigator();
 
-function SearchStackScreen() {
+function SearchStackScreen({ route }) {
   return (
     <SearchStack.Navigator
       screenOptions={{
@@ -122,7 +138,11 @@ function SearchStackScreen() {
         },
       }}
     >
-      <SearchStack.Screen name="Search" component={SearchScreen} />
+      <SearchStack.Screen
+        name="Search"
+        component={SearchScreen}
+        initialParams={{ data: route.params.data.search }}
+      />
       <SearchStack.Screen name="Details" component={DetailsScreen} />
     </SearchStack.Navigator>
   );
@@ -147,12 +167,12 @@ export default class App extends React.Component {
   async prepareResources() {
     try {
       const data = await loadData();
-
       this.setState({ appIsReady: true, data }, async () => {
         await SplashScreen.hideAsync();
       });
     } catch (e) {
       console.log(e);
+      Sentry.captureException(new Error("connection to server error"));
       Alert.alert(
         "Connection To Server Unavailable",
         "Please Connect To The Internt To Continue",
@@ -166,12 +186,12 @@ export default class App extends React.Component {
     if (!this.state.appIsReady) {
       return null;
     }
-
     return (
       <NavigationContainer>
         <Tab.Navigator
           initialRouteName="Home"
           tabBarOptions={{
+            keyboardHidesTabBar: true,
             inactiveTintColor: ICON_UNFOCUSED_COLOUR,
             activeTintColor: ICON_FOCUSED_COLOUR,
           }}
@@ -196,6 +216,7 @@ export default class App extends React.Component {
           <Tab.Screen
             name="Search"
             component={SearchStackScreen}
+            initialParams={{ data: this.state.data }}
             options={{
               tabBarIcon: (props) => (
                 <FontAwesome5
@@ -212,6 +233,7 @@ export default class App extends React.Component {
           <Tab.Screen
             name="Help"
             component={HelpStackScreen}
+            initialParams={{ data: this.state.data }}
             options={{
               tabBarIcon: (props) => (
                 <Foundation
@@ -226,6 +248,7 @@ export default class App extends React.Component {
           <Tab.Screen
             name="About"
             component={AboutStackScreen}
+            initialParams={{ data: this.state.data }}
             options={{
               tabBarIcon: (props) => (
                 <FontAwesome

@@ -1,8 +1,16 @@
 import React, { Component, useState, useEffect } from "react";
-import { Text, View, Button, ScrollView, StyleSheet } from "react-native";
+import {
+  Text,
+  Image,
+  Button,
+  ScrollView,
+  StyleSheet,
+  Dimensions,
+} from "react-native";
 import DrugInfoScrollView from "../components/DrugInfo/DrugInfoScrollView";
 import MakingChoicesScrollView from "../components/MakingChoices/MakingChoicesScrollView";
 import ConversationScrollView from "../components/Conversation/ConversationScrollView";
+import Footer from "../components/Common/FrankFooter";
 
 const BACKGROUND_COLOUR = "#fbb959";
 
@@ -15,6 +23,7 @@ const Home = ({ route }) => {
       <DrugInfoScrollView data={route.params.data} />
       <MakingChoicesScrollView data={route.params.data} />
       <ConversationScrollView data={route.params.data} />
+      <Footer />
     </ScrollView>
   );
 };
