@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { Text, StyleSheet, View, ScrollView, Dimensions } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  ScrollView,
+  BackHandler,
+  Alert,
+} from "react-native";
 import HorizontalCardAndOverlay from "../../components/Common/HorizontalCardAndOverlay";
-import HorizontalCard from "../../components/Common/HorizontalCard";
-import * as Sentry from "sentry-expo";
+import { useNavigation } from "@react-navigation/native";
 import Frank from "../../components/Common/FrankFooter";
 
 import Icons from "../../components/Common/Icons";
