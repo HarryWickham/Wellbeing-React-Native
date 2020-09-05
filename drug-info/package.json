@@ -35,7 +35,7 @@
     "react-native-onboarding-swiper": "^1.1.4",
     "react-native-paper": "^4.0.1",
     "react-native-reanimated": "~1.9.0",
-    "react-native-safe-area-context": "~3.0.7",
+    "react-native-safe-area-context": "~3.1.7",
     "react-native-screens": "~2.9.0",
     "react-native-tab-view": "^2.15.1",
     "react-native-tts": "^3.2.0",
