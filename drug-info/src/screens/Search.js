@@ -1,9 +1,34 @@
 import React, { Component } from "react";
-import { View, Text, FlatList, ActivityIndicator, Alert } from "react-native";
+import { View, Text, FlatList, TouchableOpacity, Platform } from "react-native";
 import { ListItem, SearchBar } from "react-native-elements";
 import Icon from "../components/Common/Icons";
+import { useNavigation } from '@react-navigation/native';
+
+const Item = ({ item, navigation }) => (
+  
+  <TouchableOpacity
+    onPress={() =>
+      navigation.navigate("Drug Information", {
+        page: item.title,
+      })
+    }
+  >
+    <View
+      style={{
+        flexDirection: "row",
+        backgroundColor: "#fff",
+        borderRadius: 8,
+        paddingHorizontal: 5,
+      }}
+    >
+      <Icon iconLib={item.iconLib} iconName={item.iconName} ICON_SIZE={40} />
+      <Text>{item.title}</Text>
+    </View>
+  </TouchableOpacity>
+);
 
 class Search extends Component {
+
   constructor(props) {
     super(props);
 
@@ -52,47 +77,30 @@ class Search extends Component {
 
   renderHeader = () => {
     return (
+      <View style={{paddingBottom:10}}>
       <SearchBar
         placeholder="Type Here..."
+        platform={Platform.OS === "android" ? "android" : "ios"}
         lightTheme
         round
         onChangeText={(text) => this.searchFilterFunction(text)}
         autoCorrect={false}
         value={this.state.value}
       />
+      </View>
     );
   };
 
+  renderItem = ({ item }) => {
+    return <Item item={item} navigation={this.props.navigation} />;
+  };
+
   render() {
-    const ITEMCOLOUR = "#FBD499";
     return (
       <View style={{ flex: 1, backgroundColor: "#fbb959" }}>
         <FlatList
           data={this.state.data}
-          renderItem={({ item }) => (
-            <View style={{ flexDirection: "row", backgroundColor: ITEMCOLOUR }}>
-              <View
-                style={{ width: 50, justifyContent: "center", marginLeft: 5 }}
-              >
-                <Icon
-                  iconLib={item.iconLib}
-                  iconName={item.iconName}
-                  ICON_SIZE={40}
-                />
-              </View>
-              <ListItem
-                underlayColor={"#fbb959"}
-                containerStyle={{backgroundColor: ITEMCOLOUR}}
-                style={{ flex: 1, backgroundColor: ITEMCOLOUR }}
-                title={`${item.title}`}
-                onPress={() =>
-                  this.props.navigation.navigate("Drug Information", {
-                    page: item.title,
-                  })
-                }
-              ></ListItem>
-            </View>
-          )}
+          renderItem={this.renderItem}
           keyExtractor={(item) => item.title}
           ItemSeparatorComponent={this.renderSeparator}
           ListHeaderComponent={this.renderHeader}
