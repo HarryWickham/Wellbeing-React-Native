@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import { View, Text, FlatList, TouchableOpacity, Platform } from "react-native";
 import { ListItem, SearchBar } from "react-native-elements";
 import Icon from "../components/Common/Icons";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 
 const Item = ({ item, navigation }) => (
-  
   <TouchableOpacity
     onPress={() =>
       navigation.navigate("Drug Information", {
@@ -17,18 +16,21 @@ const Item = ({ item, navigation }) => (
       style={{
         flexDirection: "row",
         backgroundColor: "#fff",
+        borderWidth: 1,
         borderRadius: 8,
         paddingHorizontal: 5,
+        marginHorizontal: 5,
       }}
     >
-      <Icon iconLib={item.iconLib} iconName={item.iconName} ICON_SIZE={40} />
-      <Text>{item.title}</Text>
+      <View style={{ width: 50 }}>
+        <Icon iconLib={item.iconLib} iconName={item.iconName} ICON_SIZE={40} />
+      </View>
+      <Text style={{ alignSelf: "center", paddingLeft: 10, fontSize: 18 }}>{item.title}</Text>
     </View>
   </TouchableOpacity>
 );
 
 class Search extends Component {
-
   constructor(props) {
     super(props);
 
@@ -77,16 +79,15 @@ class Search extends Component {
 
   renderHeader = () => {
     return (
-      <View style={{paddingBottom:10}}>
-      <SearchBar
-        placeholder="Type Here..."
-        platform={Platform.OS === "android" ? "android" : "ios"}
-        lightTheme
-        round
-        onChangeText={(text) => this.searchFilterFunction(text)}
-        autoCorrect={false}
-        value={this.state.value}
-      />
+      <View style={{ paddingBottom: 10 }}>
+        <SearchBar
+          style={{ color: "red" }}
+          placeholder="Type Here..."
+          platform={Platform.OS === "android" ? "android" : "ios"}
+          onChangeText={(text) => this.searchFilterFunction(text)}
+          autoCorrect={false}
+          value={this.state.value}
+        />
       </View>
     );
   };

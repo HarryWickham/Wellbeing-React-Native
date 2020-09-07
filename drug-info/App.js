@@ -28,6 +28,7 @@ import DrugInfo from "./src/screens/DrugInfo/DrugInfo";
 import AsyncStorage from "@react-native-community/async-storage";
 import * as Sentry from "sentry-expo";
 import Onboarding from "react-native-onboarding-swiper";
+import { getBottomSpace } from 'react-native-iphone-x-helper'
 
 Sentry.init({
   dsn:
@@ -199,10 +200,7 @@ export default class App extends React.Component {
           initialRouteName="Home"
           tabBarOptions={{
             tabStyle: {
-              transform:
-                Platform.OS === "android"
-                  ? [{ translateY: -5 }]
-                  : [{ translateY: -15 }],
+              transform:[{ translateY: -getBottomSpace() }],
               backgroundColor: "white",
               borderTopWidth: 1,
               borderColor: "#B8B8B8",
