@@ -1,12 +1,6 @@
 import * as React from "react";
-import {
-  Button,
-  Text,
-  View,
-  Alert,
-  Platform,
-  SafeAreaView,
-} from "react-native";
+import { Text, View, Alert, Platform, ScrollView } from "react-native";
+import { Button } from "react-native-elements";
 import { NavigationContainer } from "@react-navigation/native";
 import {
   CardStyleInterpolators,
@@ -156,6 +150,19 @@ function SearchStackScreen({ route }) {
   );
 }
 
+const Done = ({ ...props }) => (
+  <Button
+    title={"Accept"}
+    buttonStyle={{ paddingRight: 20 }}
+    containerViewStyle={{
+      marginVertical: 10,
+      width: 70,
+    }}
+    type="clear"
+    {...props}
+  />
+);
+
 const Tab = createBottomTabNavigator();
 
 export default class App extends React.Component {
@@ -171,7 +178,7 @@ export default class App extends React.Component {
       console.warn(e);
     }
     this.prepareResources();
-    this.checkOnbarded();
+    //this.checkOnbarded();
   }
 
   async checkOnbarded() {
@@ -212,24 +219,19 @@ export default class App extends React.Component {
       return (
         <Onboarding
           onDone={() => this.onboardedComplete()}
+          controlStatusBar={false}
+          showSkip={false}
+          transitionAnimationDuration={100}
+          DoneButtonComponent={Done}
+          flatlistProps={{ scrollEnabled: false }}
           pages={[
             {
               backgroundColor: "#fff",
-              image: <View />,
-              title: "Onboarding",
-              subtitle: "Done with React Native Onboarding Swiper",
-            },
-            {
-              backgroundColor: "#fe6e58",
-              image: <View />,
-              title: "The Title",
-              subtitle: "This is the subtitle that sumplements the title.",
-            },
-            {
-              backgroundColor: "#999",
-              image: <View />,
-              title: "Triangle",
-              subtitle: "Beautiful, isn't it?",
+              image: (
+                <FontAwesome name="exclamation" size={100} color="black" />
+              ),
+              title: "Disclaimer",
+              subtitle: `${this.state.data.about.disclaimer} \n\n Writen by: ${this.state.data.about.writenBy} \n ${this.state.data.about.writenByContact} \n\n Developed by: ${this.state.data.about.developedBy} \n ${this.state.data.about.developedByContact}`,
             },
           ]}
         />
