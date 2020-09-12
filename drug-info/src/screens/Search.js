@@ -20,6 +20,7 @@ const Item = ({ item, navigation }) => (
         borderRadius: 8,
         paddingHorizontal: 5,
         marginHorizontal: 5,
+        paddingVertical: 5
       }}
     >
       <View style={{ width: 50 }}>
@@ -66,7 +67,7 @@ class Search extends Component {
     });
 
     const newData = this.arrayholder.filter((item) => {
-      const itemData = `${item.title.toUpperCase()}`;
+      const itemData = `${item.title.toUpperCase()} ${item.synonyms.toUpperCase()}`;
       const textData = text.toUpperCase();
 
       return itemData.indexOf(textData) > -1;

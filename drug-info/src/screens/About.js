@@ -21,6 +21,7 @@ const About = ({ route }) => {
           smallDescription={data.disclaimer}
         />
       </ScrollView>
+      
     </View>
   );
 };

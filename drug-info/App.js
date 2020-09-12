@@ -28,7 +28,7 @@ import DrugInfo from "./src/screens/DrugInfo/DrugInfo";
 import AsyncStorage from "@react-native-community/async-storage";
 import * as Sentry from "sentry-expo";
 import Onboarding from "react-native-onboarding-swiper";
-import { getBottomSpace } from 'react-native-iphone-x-helper'
+import { getBottomSpace } from "react-native-iphone-x-helper";
 
 Sentry.init({
   dsn:
@@ -161,6 +161,7 @@ const Tab = createBottomTabNavigator();
 export default class App extends React.Component {
   state = {
     appIsReady: false,
+    onboarded: false,
   };
 
   async componentDidMount() {
@@ -170,6 +171,19 @@ export default class App extends React.Component {
       console.warn(e);
     }
     this.prepareResources();
+    this.checkOnbarded();
+  }
+
+  async checkOnbarded() {
+    const onboardedStatus = await AsyncStorage.getItem("@onboarding_data");
+    if (onboardedStatus != null) {
+      this.setState({ onboarded: true });
+    }
+  }
+
+  async onboardedComplete() {
+    await AsyncStorage.setItem("@onboarding_data", "true");
+    this.setState({ onboarded: true });
   }
 
   async prepareResources() {
@@ -194,94 +208,128 @@ export default class App extends React.Component {
     if (!this.state.appIsReady) {
       return null;
     }
-    return (
-      <NavigationContainer>
-        <Tab.Navigator
-          initialRouteName="Home"
-          tabBarOptions={{
-            tabStyle: {
-              transform:[{ translateY: -getBottomSpace() }],
-              backgroundColor: "white",
-              borderTopWidth: 1,
-              borderColor: "#B8B8B8",
+    if (!this.state.onboarded) {
+      return (
+        <Onboarding
+          onDone={() => this.onboardedComplete()}
+          pages={[
+            {
+              backgroundColor: "#fff",
+              image: <View />,
+              title: "Onboarding",
+              subtitle: "Done with React Native Onboarding Swiper",
             },
-            style: {
-              backgroundColor: "white",
+            {
+              backgroundColor: "#fe6e58",
+              image: <View />,
+              title: "The Title",
+              subtitle: "This is the subtitle that sumplements the title.",
             },
-            keyboardHidesTabBar: true,
-            inactiveTintColor: ICON_UNFOCUSED_COLOUR,
-            activeTintColor: ICON_FOCUSED_COLOUR,
-          }}
-        >
-          <Tab.Screen
-            name="Home"
-            component={HomeStackScreen}
-            initialParams={{ data: this.state.data }}
-            options={{
-              tabBarIcon: (props) => (
-                <Entypo
-                  name="home"
-                  size={30}
-                  color={
-                    props.focused ? ICON_FOCUSED_COLOUR : ICON_UNFOCUSED_COLOUR
-                  }
-                  style={{ marginBottom: -3 }}
-                />
-              ),
+            {
+              backgroundColor: "#999",
+              image: <View />,
+              title: "Triangle",
+              subtitle: "Beautiful, isn't it?",
+            },
+          ]}
+        />
+      );
+    } else if (this.state.onboarded) {
+      return (
+        <NavigationContainer>
+          <Tab.Navigator
+            initialRouteName="Home"
+            tabBarOptions={{
+              tabStyle: {
+                transform: [{ translateY: -getBottomSpace() }],
+                backgroundColor: "white",
+                borderTopWidth: 1,
+                borderColor: "#B8B8B8",
+              },
+              style: {
+                backgroundColor: "white",
+              },
+              keyboardHidesTabBar: true,
+              inactiveTintColor: ICON_UNFOCUSED_COLOUR,
+              activeTintColor: ICON_FOCUSED_COLOUR,
             }}
-          />
-          <Tab.Screen
-            name="Search"
-            component={SearchStackScreen}
-            initialParams={{ data: this.state.data }}
-            options={{
-              tabBarIcon: (props) => (
-                <FontAwesome5
-                  name="search"
-                  size={25}
-                  color={
-                    props.focused ? ICON_FOCUSED_COLOUR : ICON_UNFOCUSED_COLOUR
-                  }
-                  style={{ marginBottom: -3 }}
-                />
-              ),
-            }}
-          />
-          <Tab.Screen
-            name="Help"
-            component={HelpStackScreen}
-            initialParams={{ data: this.state.data }}
-            options={{
-              tabBarIcon: (props) => (
-                <Foundation
-                  name="alert"
-                  size={30}
-                  color={props.focused ? ICON_FOCUSED_COLOUR : "red"}
-                  style={{ marginBottom: -3 }}
-                />
-              ),
-            }}
-          />
-          <Tab.Screen
-            name="About"
-            component={AboutStackScreen}
-            initialParams={{ data: this.state.data }}
-            options={{
-              tabBarIcon: (props) => (
-                <FontAwesome
-                  name="question-circle"
-                  size={30}
-                  color={
-                    props.focused ? ICON_FOCUSED_COLOUR : ICON_UNFOCUSED_COLOUR
-                  }
-                  style={{ marginBottom: -3 }}
-                />
-              ),
-            }}
-          />
-        </Tab.Navigator>
-      </NavigationContainer>
-    );
+          >
+            <Tab.Screen
+              name="Home"
+              component={HomeStackScreen}
+              initialParams={{ data: this.state.data }}
+              options={{
+                tabBarIcon: (props) => (
+                  <Entypo
+                    name="home"
+                    size={30}
+                    color={
+                      props.focused
+                        ? ICON_FOCUSED_COLOUR
+                        : ICON_UNFOCUSED_COLOUR
+                    }
+                    style={{ marginBottom: -3 }}
+                  />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="Search"
+              component={SearchStackScreen}
+              initialParams={{ data: this.state.data }}
+              options={{
+                tabBarIcon: (props) => (
+                  <FontAwesome5
+                    name="search"
+                    size={25}
+                    color={
+                      props.focused
+                        ? ICON_FOCUSED_COLOUR
+                        : ICON_UNFOCUSED_COLOUR
+                    }
+                    style={{ marginBottom: -3 }}
+                  />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="Help"
+              component={HelpStackScreen}
+              initialParams={{ data: this.state.data }}
+              options={{
+                tabBarIcon: (props) => (
+                  <Foundation
+                    name="alert"
+                    size={30}
+                    color={props.focused ? ICON_FOCUSED_COLOUR : "red"}
+                    style={{ marginBottom: -3 }}
+                  />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="About"
+              component={AboutStackScreen}
+              initialParams={{ data: this.state.data }}
+              options={{
+                tabBarIcon: (props) => (
+                  <FontAwesome
+                    name="question-circle"
+                    size={30}
+                    color={
+                      props.focused
+                        ? ICON_FOCUSED_COLOUR
+                        : ICON_UNFOCUSED_COLOUR
+                    }
+                    style={{ marginBottom: -3 }}
+                  />
+                ),
+              }}
+            />
+          </Tab.Navigator>
+        </NavigationContainer>
+      );
+    }
   }
 }
 
@@ -292,12 +340,12 @@ async function loadData() {
     );
     const data = await result.json();
     const jsonValue = JSON.stringify(data);
-    await AsyncStorage.setItem("@storage_Key", jsonValue);
+    await AsyncStorage.setItem("@drug_data", jsonValue);
   } catch (e) {
     console.warn(e);
   }
   try {
-    const jsonValue = await AsyncStorage.getItem("@storage_Key");
+    const jsonValue = await AsyncStorage.getItem("@drug_data");
     if (jsonValue !== null) {
       return JSON.parse(jsonValue);
     }
