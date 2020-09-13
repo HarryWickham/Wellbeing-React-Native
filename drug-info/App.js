@@ -23,6 +23,7 @@ import AsyncStorage from "@react-native-community/async-storage";
 import * as Sentry from "sentry-expo";
 import Onboarding from "react-native-onboarding-swiper";
 import { getBottomSpace } from "react-native-iphone-x-helper";
+import OnboardingScreen from "./src/screens/OnboardingScreen";
 
 Sentry.init({
   dsn:
@@ -227,10 +228,9 @@ export default class App extends React.Component {
           pages={[
             {
               backgroundColor: "#fff",
-              image: (
-                <FontAwesome name="exclamation" size={100} color="black" />
-              ),
-              title: "Disclaimer",
+              image: <View />,
+              title: <OnboardingScreen />,
+              subTitleStyles: { borderWidth: 1 },
               subtitle: `${this.state.data.about.disclaimer} \n\n Writen by: ${this.state.data.about.writenBy} \n ${this.state.data.about.writenByContact} \n\n Developed by: ${this.state.data.about.developedBy} \n ${this.state.data.about.developedByContact}`,
             },
           ]}
