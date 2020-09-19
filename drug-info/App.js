@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, View, Alert, Platform, ScrollView } from "react-native";
+import { Text, View, Alert, Platform, ScrollView, Image } from "react-native";
 import { Button } from "react-native-elements";
 import { NavigationContainer } from "@react-navigation/native";
 import {
@@ -154,7 +154,7 @@ function SearchStackScreen({ route }) {
 const Done = ({ ...props }) => (
   <Button
     title={"Accept"}
-    buttonStyle={{ paddingRight: 20 }}
+    buttonStyle={{ paddingRight: 20,  }}
     containerViewStyle={{
       marginVertical: 10,
       width: 70,
@@ -163,6 +163,12 @@ const Done = ({ ...props }) => (
     {...props}
   />
 );
+
+const Square = () => {
+  return (
+    <View/>
+  );
+};
 
 const Tab = createBottomTabNavigator();
 
@@ -189,9 +195,25 @@ export default class App extends React.Component {
     }
   }
 
+  checkOnboardingComplete() {
+    
+    Alert.alert(
+      "Have you read the disclaimer?",
+      "Make sure you read the entire disclaimer",
+      [
+        {
+          text: "Re-Read",
+          style: "cancel",
+        },
+        { text: "Confirm", onPress: () => this.onboardedComplete() },
+      ],
+      { cancelable: true }
+    );
+  }
+
   async onboardedComplete() {
-    await AsyncStorage.setItem("@onboarding_data", "true");
     this.setState({ onboarded: true });
+    await AsyncStorage.setItem("@onboarding_data", "true");
   }
 
   async prepareResources() {
@@ -219,19 +241,20 @@ export default class App extends React.Component {
     if (!this.state.onboarded) {
       return (
         <Onboarding
-          onDone={() => this.onboardedComplete()}
+          onDone={() => this.checkOnboardingComplete()}
           controlStatusBar={false}
           showSkip={false}
           transitionAnimationDuration={100}
           DoneButtonComponent={Done}
           flatlistProps={{ scrollEnabled: false }}
+          bottomBarColor="#FBD499"
+          DotComponent={Square}
           pages={[
             {
-              backgroundColor: "#fff",
-              image: <View />,
-              title: <OnboardingScreen />,
-              subTitleStyles: { borderWidth: 1 },
-              subtitle: `${this.state.data.about.disclaimer} \n\n Writen by: ${this.state.data.about.writenBy} \n ${this.state.data.about.writenByContact} \n\n Developed by: ${this.state.data.about.developedBy} \n ${this.state.data.about.developedByContact}`,
+              backgroundColor: "#fbb959",
+              image: <View/>,
+              title: <View/>,
+              subtitle: <OnboardingScreen data={this.state.data.about} />,
             },
           ]}
         />
@@ -243,7 +266,7 @@ export default class App extends React.Component {
             initialRouteName="Home"
             tabBarOptions={{
               tabStyle: {
-                transform: [{ translateY: -getBottomSpace() }],
+                //transform: [{ translateY: -getBottomSpace() }], Looks like the tab navigator already takes into account the iPhone 10 Bar.yarn
                 backgroundColor: "white",
                 borderTopWidth: 1,
                 borderColor: "#B8B8B8",

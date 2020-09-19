@@ -1,10 +1,27 @@
 import React from "react";
-import { StyleSheet, Text, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView, Image, Dimensions } from "react-native";
+import HorizontalCard from "../components/Common/HorizontalCard";
 
-const OnboardingScreen = () => {
+const { width, height } = Dimensions.get('window');
+
+const OnboardingScreen = (data) => {
+  
   return (
-    <ScrollView style={{ borderWidth: 1, width: "100%", maxHeight: "30%" }}>
-      <Text style={{ borderWidth: 1, textAlign: "center" }}>Hi</Text>
+    <ScrollView
+      scrollEnabled={true}
+      bounces={true}
+      style={{ backgroundColor: "#fbb959", }}
+      id
+    >
+      <View style={{paddingBottom: 60 }}>
+      <Image source={require("../../assets/splash.png")} style={{resizeMode: 'contain', width: "100%", maxHeight: (width/2)+10 }}/>
+      <View style={{ backgroundColor: "#FBD499",  }}>
+        <HorizontalCard
+          title="Disclaimer"
+          smallDescription={data.data.disclaimer}
+        />
+      </View>
+      </View>
     </ScrollView>
   );
 };
