@@ -24,10 +24,10 @@ import * as Sentry from "sentry-expo";
 import Onboarding from "react-native-onboarding-swiper";
 import { getBottomSpace } from "react-native-iphone-x-helper";
 import OnboardingScreen from "./src/screens/OnboardingScreen";
+import ApiKeys from "./ApiKeys";
 
 Sentry.init({
-  dsn:
-    "https://7d0d7ccbb01843f4ab9ca74797e71269@o437910.ingest.sentry.io/5401009",
+  dsn: ApiKeys(),
   enableInExpoDevelopment: true,
   debug: true,
 });
@@ -154,7 +154,7 @@ function SearchStackScreen({ route }) {
 const Done = ({ ...props }) => (
   <Button
     title={"Accept"}
-    buttonStyle={{ paddingRight: 20,  }}
+    buttonStyle={{ paddingRight: 20 }}
     containerViewStyle={{
       marginVertical: 10,
       width: 70,
@@ -165,9 +165,7 @@ const Done = ({ ...props }) => (
 );
 
 const Square = () => {
-  return (
-    <View/>
-  );
+  return <View />;
 };
 
 const Tab = createBottomTabNavigator();
@@ -196,7 +194,6 @@ export default class App extends React.Component {
   }
 
   checkOnboardingComplete() {
-    
     Alert.alert(
       "Have you read the disclaimer?",
       "Make sure you read the entire disclaimer",
@@ -252,8 +249,8 @@ export default class App extends React.Component {
           pages={[
             {
               backgroundColor: "#fbb959",
-              image: <View/>,
-              title: <View/>,
+              image: <View />,
+              title: <View />,
               subtitle: <OnboardingScreen data={this.state.data.about} />,
             },
           ]}
