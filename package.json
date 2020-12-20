@@ -10,6 +10,7 @@
   "dependencies": {
     "@react-native-community/async-storage": "~1.11.0",
     "@react-native-community/masked-view": "0.1.10",
+<<<<<<< HEAD:drug-info/package.json
     "@react-navigation/bottom-tabs": "^5.11.2",
     "@react-navigation/material-bottom-tabs": "^5.3.10",
     "@react-navigation/material-top-tabs": "^5.3.10",
@@ -17,6 +18,15 @@
     "@react-navigation/stack": "^5.12.8",
     "expo": "^38.0.10",
     "expo-cli": "^3.28.6",
+=======
+    "@react-navigation/bottom-tabs": "^5.8.0",
+    "@react-navigation/material-bottom-tabs": "^5.2.16",
+    "@react-navigation/material-top-tabs": "^5.2.16",
+    "@react-navigation/native": "^5.7.3",
+    "@react-navigation/stack": "^5.9.0",
+    "expo": "^38.0.0",
+    "expo-cli": "^3.27.7",
+>>>>>>> 565c6516a9215ba563ac2a3ba95eb82148cfd41b:package.json
     "expo-constants": "~9.1.1",
     "expo-mail-composer": "~8.2.1",
     "expo-speech": "~8.2.1",

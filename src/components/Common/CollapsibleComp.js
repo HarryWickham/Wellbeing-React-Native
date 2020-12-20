@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   content: {
-    padding: 20,
+    padding: 5,
     backgroundColor: "#FBD499",
   },
   titleBox: {

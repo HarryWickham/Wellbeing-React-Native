@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, View, Alert, Platform, ScrollView } from "react-native";
+import { Text, View, Alert, Platform, ScrollView, Image } from "react-native";
 import { Button } from "react-native-elements";
 import { NavigationContainer } from "@react-navigation/native";
 import {
@@ -24,10 +24,10 @@ import * as Sentry from "sentry-expo";
 import Onboarding from "react-native-onboarding-swiper";
 import { getBottomSpace } from "react-native-iphone-x-helper";
 import OnboardingScreen from "./src/screens/OnboardingScreen";
+import ApiKeys from "./ApiKeys";
 
 Sentry.init({
-  dsn:
-    "https://7d0d7ccbb01843f4ab9ca74797e71269@o437910.ingest.sentry.io/5401009",
+  dsn: ApiKeys(),
   enableInExpoDevelopment: true,
   debug: true,
 });
@@ -164,6 +164,10 @@ const Done = ({ ...props }) => (
   />
 );
 
+const Square = () => {
+  return <View />;
+};
+
 const Tab = createBottomTabNavigator();
 
 export default class App extends React.Component {
@@ -189,9 +193,24 @@ export default class App extends React.Component {
     }
   }
 
+  checkOnboardingComplete() {
+    Alert.alert(
+      "Have you read the disclaimer?",
+      "Make sure you read the entire disclaimer",
+      [
+        {
+          text: "Re-Read",
+          style: "cancel",
+        },
+        { text: "Confirm", onPress: () => this.onboardedComplete() },
+      ],
+      { cancelable: true }
+    );
+  }
+
   async onboardedComplete() {
-    await AsyncStorage.setItem("@onboarding_data", "true");
     this.setState({ onboarded: true });
+    await AsyncStorage.setItem("@onboarding_data", "true");
   }
 
   async prepareResources() {
@@ -219,19 +238,20 @@ export default class App extends React.Component {
     if (!this.state.onboarded) {
       return (
         <Onboarding
-          onDone={() => this.onboardedComplete()}
+          onDone={() => this.checkOnboardingComplete()}
           controlStatusBar={false}
           showSkip={false}
           transitionAnimationDuration={100}
           DoneButtonComponent={Done}
           flatlistProps={{ scrollEnabled: false }}
+          bottomBarColor="#FBD499"
+          DotComponent={Square}
           pages={[
             {
-              backgroundColor: "#fff",
+              backgroundColor: "#fbb959",
               image: <View />,
-              title: <OnboardingScreen />,
-              subTitleStyles: { borderWidth: 1 },
-              subtitle: `${this.state.data.about.disclaimer} \n\n Writen by: ${this.state.data.about.writenBy} \n ${this.state.data.about.writenByContact} \n\n Developed by: ${this.state.data.about.developedBy} \n ${this.state.data.about.developedByContact}`,
+              title: <View />,
+              subtitle: <OnboardingScreen data={this.state.data.about} />,
             },
           ]}
         />
@@ -243,7 +263,7 @@ export default class App extends React.Component {
             initialRouteName="Home"
             tabBarOptions={{
               tabStyle: {
-                transform: [{ translateY: -getBottomSpace() }],
+                //transform: [{ translateY: -getBottomSpace() }], Looks like the tab navigator already takes into account the iPhone 10 Bar.yarn
                 backgroundColor: "white",
                 borderTopWidth: 1,
                 borderColor: "#B8B8B8",
